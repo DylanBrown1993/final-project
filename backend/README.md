@@ -1,0 +1,1 @@
+- npm run server to start the server
