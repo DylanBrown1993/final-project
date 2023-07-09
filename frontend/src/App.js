@@ -1,9 +1,11 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Review from './components/Review';
+import Games from './components/Games'
 import Home from './components/Home';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import ColorJump from './components/ColorJump';
 
 
 function App () {
@@ -21,6 +23,8 @@ function App () {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/reviews" element={<Review/>}/>
+          <Route path="/games" element={<Games/>}/>
+          <Route path="/colorjump" element={<ColorJump/>}/>
         </Routes>
       </Router>
     );

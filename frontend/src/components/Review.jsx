@@ -7,7 +7,7 @@ const Review = () => {
       <div className="review-container">
         <div className="info">
           <div className="date">
-            <p>DATE</p>
+            <p>DATEaaaaa</p>
           </div>
           <div className="title">
             <p>TITLE</p>
