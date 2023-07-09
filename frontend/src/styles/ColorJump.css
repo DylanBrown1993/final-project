@@ -1,14 +1,30 @@
+.background {
+  background-color: #588157;
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
 .game-info-container {
+  margin-left: 17.5%;
+  margin-right: 17.5%;
+  padding: 2em;
+  border: .2em solid #3A5A40;
+  background-color: #DAD7CD;
   display: flex;
+  font-family: 'Abeezee';
   flex-direction: column;
   align-items: center;
 }
 
+
 .game-title {
   text-align: center;
+  font-size: 23px;
+  padding-bottom: 1em;
 }
 
 .game-description {
+  font-size: 8px;
   text-align: center;
   margin-left: 5%;
   margin-right: 5%

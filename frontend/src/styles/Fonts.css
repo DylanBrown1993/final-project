@@ -4,3 +4,18 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'ABeeZee';
+  src: url('/src/fonts/ABeeZee/ABeeZee-Regular.ttf') format('regular');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'ABeeZee';
+  src: url('/src/fonts/ABeeZee/ABeeZee-Italic.ttf') format('italic');
+  font-weight: normal;
+  font-style: normal;
+}
