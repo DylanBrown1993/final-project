@@ -125,6 +125,11 @@ app.get('/rungame', async (req, res) => {
   res.send(rows);
 });
 
+app.get('/login', async (req, res) => {'SELECT * FROM users WHERE email = $1 AND password = $2', [email, password]
+  res.send(rows);
+})
+
+app.get('/register', async (req, res) => {'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)', [name, email, password]})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
