@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Rating = () => {
+const Rating = ({reviewId}) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
 
@@ -9,7 +9,7 @@ const Rating = () => {
 
   const fetchRating = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/ratings')
+      const response = await axios.get(`http://localhost:3001/api/ratings?page=${reviewId}`)
       setRating(response.data.rating);
     } catch (error) {
       console.error ('Error fetching rating:', error)
@@ -18,11 +18,11 @@ const Rating = () => {
 
   useEffect(() => {
     fetchRating();
-  }, []);
+  }, [reviewId]);
   
   const changeRating = async (newRating) => {
     try {
-      await axios.post('http://localhost:3001/api/ratings', { rating: newRating });
+      await axios.post(`http://localhost:3001/api/ratings?page=${reviewId}`, { rating: newRating });
       setRating(newRating);
     } catch (error) {
       console.error ('Error changing rating:', error)

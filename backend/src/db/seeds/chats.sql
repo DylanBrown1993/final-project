@@ -1,5 +1,5 @@
 INSERT INTO chats (body, time_stamp, user_id) 
-  VALUES ('Hello there!', CURRENT_TIMESTAMP, 1);
+  VALUES ('Hello there!', LOCALTIMESTAMP, 1);
 INSERT INTO chats (body, time_stamp, user_id) 
-  VALUES ('Hi!', CURRENT_TIMESTAMP, 2);
+  VALUES ('Hi!', LOCALTIMESTAMP, 2);
 

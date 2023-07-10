@@ -32,7 +32,7 @@ const Review = () => {
           <h1>{review.title}</h1>
           {/* change user_id? */}
           <p>{review.user_id}</p>
-          <ReviewRatings/>
+          <ReviewRatings reviewId={id}/>
           <p>{review.description}</p>
           <p>{review.body}</p>
           <p>{review.time_stamp}</p>

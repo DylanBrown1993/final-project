@@ -22,7 +22,7 @@ const Article = () => {
   }, [id]);
 
   if (!article) {
-    return <div> Article Not Found </div>;
+    return <div> Article Loading... </div>;
   }
 
   return (
@@ -34,11 +34,11 @@ const Article = () => {
           <div style={{backgroundImage: `url(${article.header_image})`}} className="article-background">
             <h1>{article.title}</h1>
             {/* change user_id? */}
-            <p>{article.user_id}</p>
+            <p>{article.user_name}</p>
             <p>{article.description}</p>
           </div>
           <p>{article.body}</p>
-          <ArticleLikes/>
+          <ArticleLikes articleId={id}/>
         </div>
       </div>
     </div>
