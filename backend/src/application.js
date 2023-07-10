@@ -48,7 +48,7 @@ app.get('/review/:id', async (req, res) => {
   const reviewId = req.params.id;
 
   try {
-    const { rows } = await pool.query(`SELECT * FROM reviews WHERE id = $1`, [reviewId]); 
+    const { rows } = await pool.query(`SELECT * FROM reviews, users WHERE reviews.id = $1 AND reviews.user_id = users.id`, [reviewId]); 
     if (rows.length === 0) {
       return res.status(404).json({error: 'Review Not Found'});
     }
@@ -68,7 +68,7 @@ app.get('/article/:id', async (req, res) => {
   const articleId = req.params.id;
 
   try {
-    const { rows } = await pool.query(`SELECT * FROM articles WHERE id = $1`, [articleId]); 
+    const { rows } = await pool.query(`SELECT * FROM articles, users WHERE articles.id = $1 AND articles.user_id = users.id`, [articleId]); 
     if (rows.length === 0) {
       return res.status(404).json({error: 'Article Not Found'});
     }

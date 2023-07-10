@@ -1,12 +1,48 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Navigation from './Navigation';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import '../styles/Games.css';
+import '../styles/Fonts.css';
+import '../styles/Home.css';
+import RunGameImage from '../../../src/images/RunGame.png';
+import ColorJumpImage from '../../../src/images/ColorJump.png';
+import '../styles/MainArticles.css';
+import '../styles/MainReviews.css';
 
 const Home = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const getArticles = async () => {
+      try {
+        const res = await axios.get("http://localhost:3001/articles");
+        setArticles(res.data);
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+    getArticles();
+  }, []);
+
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    const getReviews = async () => {
+      try {
+        const res = await axios.get("http://localhost:3001/reviews");
+        setReviews(res.data);
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+    getReviews();
+  }, []);
+
   return (
     <div className='home-container'>
       <Navigation/>
       <div className='home-banner-content'>
-
       </div>
       <div className='home-text-section'>
         <h1 className='primary-heading'>
@@ -15,7 +51,51 @@ const Home = () => {
         <p className='home-text'>
           Home of the best gaming reviews and articles.
         </p>
+      </div>
+      <div className="home-articles-container">
+        <h2>Articles</h2>
+        <div className="home-article-grid">
+          {articles.map((article, index) => (
+            <div key={article.id} className={`home-article-item ${index === 0 ? 'home-full-width' : 'home-grid-item'}`}>
+              <Link to={`/article/${article.id}`}>
+                <div className={`home-main-article-background ${index === 0 ? 'home-main-article-first' : ''}`} style={{backgroundImage: `url(${article.header_image})`}} >
+                  <h2>{article.title}</h2>
+                    <p>{article.description}</p>
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
+      </div>
+      <div className="reviews-container">
+        <h2>Reviews</h2>
+        <div className="home-review-grid">
+          {reviews.map((review, index) => (
+            <div key={review.id} className={`home-review-item ${index === 0 ? 'home-review-full-width' : 'home-review-grid-item'}`}>
+              <Link to={`/review/${review.id}`}>
+                <div className={`home-review-content ${index === 0 ? 'home-review-first' : ''}`}>
+                  <h2>{review.title}</h2>
+                  <p>{review.description}</p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="arts-container">
+        <h2>Arts</h2>
+      </div>
+      <div className="games-container">
+        <h2>Games</h2>
+          <div className='games-list-container'>
+           <Link to="/rungame">
+              <img src={RunGameImage} alt="run-game-img" />
+            </Link>
+            <Link to="/colorjump">
+              <img src={ColorJumpImage} alt="color-jump-img" />
+            </Link>
+        </div>
+      </div>
     </div>
   );
 };

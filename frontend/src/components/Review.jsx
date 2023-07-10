@@ -7,6 +7,7 @@ import '../styles/Review.css';
 const Review = () => {
   const [review, setReview] = useState(null);
   const { id } = useParams();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getReview = async () => {
@@ -18,27 +19,38 @@ const Review = () => {
       }
     };
     getReview();
+    setLoading(false);
   }, [id]);
 
-  if (!review) {
-    return <div> Review Not Found </div>;
-  }
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
 
   return (
+    (loading) ? (
+      <div>Article Loading...</div>
+    ) : (
+      (review) ? (
     <div className="review-route">
       <div className="review-container">
         <h1>Review</h1>
         <div className="review-info">
           <h1>{review.title}</h1>
-          {/* change user_id? */}
-          <p>{review.user_id}</p>
+          <p>{review.username}</p>
           <ReviewRatings reviewId={id}/>
           <p>{review.description}</p>
           <p>{review.body}</p>
-          <p>{review.time_stamp}</p>
+          <p>{formatDate(review.time_stamp)}</p>
         </div>
       </div>
     </div>
-  );
+      )
+      :
+      (<div>
+        Not found
+      </div>)
+    )
+  )
 };
 export default Review;
