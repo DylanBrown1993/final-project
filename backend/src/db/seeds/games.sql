@@ -1,4 +1,4 @@
 INSERT INTO games (title) 
-  VALUES ('Tic-tac-toe');
+  VALUES ('Color Jump');
 INSERT INTO games (title) 
   VALUES ('Space Invaders');

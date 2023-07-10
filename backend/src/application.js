@@ -81,7 +81,8 @@ app.get('/article/:id', async (req, res) => {
 
 app.get('/api/likes', async (req, res) => {
   try {
-    const result = await pool.query('SELECT count FROM article_likes');
+    const articleId = req.query.page;
+    const result = await pool.query('SELECT "count" FROM article_likes WHERE article_id = $1', [articleId]);
     res.json({likes: result.rows[0].count});
   } catch (error) {
     console.error('Error retrieving likes count:', error);
@@ -91,7 +92,8 @@ app.get('/api/likes', async (req, res) => {
 
 app.get('/api/ratings', async (req, res) => {
   try {
-    const result = await pool.query('SELECT rating FROM reviews_ratings');
+    const reviewId = req.query.page;
+    const result = await pool.query('SELECT rating FROM reviews_ratings WHERE reviews_id = $1', [reviewId]);
     res.json({rating: result.rows[0].rating});
   } catch (error) {
     console.error('Error retrieving rating:', error);
@@ -101,8 +103,9 @@ app.get('/api/ratings', async (req, res) => {
 
 app.post('/api/likes', async (req, res) => {
   try {
+    const articleId = req.query.page;
     const updatedCount = req.body.count;
-    await pool.query('UPDATE article_likes SET count = $1', [updatedCount]);
+    await pool.query('UPDATE article_likes SET count = $1 WHERE article_id = $2', [updatedCount, articleId]);
     res.sendStatus(200);
   } catch (error) {
     console.error('Error updating likes count:', error);
@@ -112,8 +115,9 @@ app.post('/api/likes', async (req, res) => {
 
 app.post('/api/ratings', async (req, res) => {
   try {
+    const reviewId = req.query.page;
     const {rating} = req.body;
-    await pool.query('UPDATE reviews_ratings SET rating = $1', [rating]);
+    await pool.query('UPDATE reviews_ratings SET rating = $1 WHERE reviews_id = $2', [rating, reviewId]);
     res.sendStatus(200);
   } catch (error) {
     console.error('Error updating rating:', error);

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const LikeButton = () => {
+const LikeButton = ({articleId}) => {
   const [likes, setLikes] = useState(0);
 
   const fetchLikesCount = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/likes')
+      const response = await axios.get(`http://localhost:3001/api/likes?page=${articleId}`)
       setLikes(response.data.likes);
     } catch (error) {
       console.error ('Error fetching likes count:', error)
@@ -15,12 +15,12 @@ const LikeButton = () => {
 
   useEffect(() => {
     fetchLikesCount();
-  }, []);
+  }, [articleId]);
 
   const incrementLikes = async () => {
     try {
       const updatedCount = likes + 1;
-      await axios.post('http://localhost:3001/api/likes', { count: updatedCount });
+      await axios.post(`http://localhost:3001/api/likes?page=${articleId}`, { count: updatedCount });
       setLikes(updatedCount);
     } catch (error) {
       console.error ('Error incrementing likes count:', error)
