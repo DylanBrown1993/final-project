@@ -7,13 +7,12 @@ import Review from './components/Review';
 import Article from './components/Article';
 import Games from './components/Games'
 import Home from './components/Home';
-import { Navigation } from './components/Navigation';
-import Home from './components/Home';
 import Navigation from './components/Navigation';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RunGame from './components/RunGame';
+import ColorJump from './components/ColorJump';
 
 
 function App() {
@@ -39,7 +38,6 @@ function App() {
       }
 
       <Router>
-        <Home />
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -51,6 +49,7 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/colorjump" element={<ColorJump />} />
           <Route path="/rungame" element={<RunGame />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </div>
