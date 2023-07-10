@@ -4,7 +4,7 @@ function Navigation() {
   return (
     <nav>
       <h1 className="nav--text">Ribbit</h1>
-      <div className="nav--links">
+      {/* <div className="nav--links">
         <button className="btn btn--login">Login</button>
         &nbsp;
         <button className="btn btn--signup">Sign Up</button>
@@ -25,7 +25,7 @@ function Navigation() {
               <a href="/games">Games</a>
             </li>
           </ul>
-      </div>
+      </div> */}
     </nav>
   );
 }
