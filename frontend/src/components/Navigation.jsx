@@ -1,12 +1,14 @@
 import React from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import '../styles/Navigation.css';
+import { Link } from "react-router-dom";
 
 function Navigation() {
 
   const navRef = useRef();
   const showNavBar = () => navRef.current.classList.toggle('responsive_nav');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <header>
@@ -27,35 +29,10 @@ function Navigation() {
       <button className='nav-btn' onClick={showNavBar}>
         <FaBars/>
       </button>
+      {/* <Link to="/login">Login</Link>
+      {isLoggedIn ? null : <Link to="/register">Register</Link>} */}
     </header>
   );
 }
 
 export default Navigation;
-
-
-{/* <nav>
-      <h1 className="nav--text">Ribbit</h1>
-      <div className="nav--links">
-        <button className="btn btn--login">Login</button>
-        &nbsp;
-        <button className="btn btn--signup">Sign Up</button>
-      </div>
-      <div className="nav--burgerlogo">
-        <div className="nav--burger"></div>
-          <ul className="burger-items">
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/article">Article</a>
-            </li>
-            <li>
-              <a href="/review">Review</a>
-            </li>
-            <li>
-              <a href="/games">Games</a>
-            </li>
-          </ul>
-      </div>
-    </nav> */}

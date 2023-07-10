@@ -33,9 +33,9 @@ function App() {
 
   return (
     <div className="App">
-      {
+      {/* {
         currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
-      }
+      } */}
 
       <Router>
         <Navigation />
@@ -49,7 +49,8 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/colorjump" element={<ColorJump />} />
           <Route path="/rungame" element={<RunGame />} />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} /> */}
         </Routes>
       </Router>
     </div>
