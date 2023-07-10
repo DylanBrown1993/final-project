@@ -4,10 +4,6 @@ import axios from 'axios';
 const LikeButton = () => {
   const [likes, setLikes] = useState(0);
 
-  useEffect(() => {
-    fetchLikesCount();
-  }, []);
-
   const fetchLikesCount = async () => {
     try {
       const response = await axios.get('http://localhost:3001/api/likes')
@@ -16,6 +12,10 @@ const LikeButton = () => {
       console.error ('Error fetching likes count:', error)
     }
   };
+
+  useEffect(() => {
+    fetchLikesCount();
+  }, []);
 
   const incrementLikes = async () => {
     try {

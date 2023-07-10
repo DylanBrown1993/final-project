@@ -5,9 +5,7 @@ const Rating = () => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
 
-  useEffect(() => {
-    fetchRating();
-  }, []);
+
 
   const fetchRating = async () => {
     try {
@@ -18,6 +16,10 @@ const Rating = () => {
     }
   };
 
+  useEffect(() => {
+    fetchRating();
+  }, []);
+  
   const changeRating = async (newRating) => {
     try {
       await axios.post('http://localhost:3001/api/ratings', { rating: newRating });

@@ -7,8 +7,8 @@ import Review from './components/Review';
 import Article from './components/Article';
 import Games from './components/Games'
 import Home from './components/Home';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ColorJump from './components/ColorJump';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
 function App () {
