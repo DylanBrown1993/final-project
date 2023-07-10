@@ -6,7 +6,7 @@ import MainReview from './components/MainReviews';
 import MainArticles from './components/MainArticles';
 import Review from './components/Review';
 import Article from './components/Article';
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
 function App () {

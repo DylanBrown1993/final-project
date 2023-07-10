@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS article_likes CASCADE;
 
 CREATE TABLE article_likes (
   id SERIAL PRIMARY KEY NOT NULL,
-  liked BOOLEAN,
+  count INTEGER,
   article_id INTEGER REFERENCES articles(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
