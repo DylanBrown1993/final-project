@@ -6,7 +6,10 @@ import MainReview from './components/MainReviews';
 import MainArticles from './components/MainArticles';
 import Review from './components/Review';
 import Article from './components/Article';
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import Games from './components/Games'
+import Home from './components/Home';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import ColorJump from './components/ColorJump';
 
 
 function App () {
@@ -27,6 +30,9 @@ function App () {
           <Route path="/review/:id" element={<Review/>}/>
           <Route path="/articles" element={<MainArticles/>}/>
           <Route path="/article/:id" element={<Article/>}/>
+          <Route path="/reviews" element={<Review/>}/>
+          <Route path="/games" element={<Games/>}/>
+          <Route path="/colorjump" element={<ColorJump/>}/>
         </Routes>
       </Router>
     );

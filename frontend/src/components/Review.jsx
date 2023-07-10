@@ -27,6 +27,7 @@ const Review = () => {
   return (
     <div className="review-route">
       <div className="review-container">
+<<<<<<< HEAD
         <h1>Review</h1>
         <div className="review-info">
           <h1>{review.title}</h1>
@@ -36,6 +37,27 @@ const Review = () => {
           <p>{review.description}</p>
           <p>{review.body}</p>
           <p>{review.time_stamp}</p>
+=======
+        <div className="info">
+          <div className="date">
+            <p>DATEaaaaa</p>
+          </div>
+          <div className="title">
+            <p>TITLE</p>
+          </div>
+          <div className="author">
+            <p>AUTHOR</p>
+          </div>
+          <div className="rating">
+            <p>STARTS</p>
+          </div>
+        </div>
+        <div className="description">
+          <p>DESCRIPTION</p>
+        </div>
+        <div className="body">
+          <p>BODY</p>
+>>>>>>> feature/games
         </div>
       </div>
     </div>
