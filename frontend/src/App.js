@@ -9,6 +9,7 @@ import Games from './components/Games'
 import Home from './components/Home';
 import ColorJump from './components/ColorJump';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import RunGame from './components/RunGame';
 
 
 function App () {
@@ -32,6 +33,7 @@ function App () {
           <Route path="/reviews" element={<Review/>}/>
           <Route path="/games" element={<Games/>}/>
           <Route path="/colorjump" element={<ColorJump/>}/>
+          <Route path="/rungame" element={<RunGame/>}/>
         </Routes>
       </Router>
     );

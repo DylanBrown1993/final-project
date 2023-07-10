@@ -120,6 +120,11 @@ app.post('/api/ratings', async (req, res) => {
     res.status(500).json({ error: 'Error updating rating'});
   }
 });
+app.get('/rungame', async (req, res) => {
+  const { rows } = await client.query(`SELECT * FROM games`);
+  res.send(rows);
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

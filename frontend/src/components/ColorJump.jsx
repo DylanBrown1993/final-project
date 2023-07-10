@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/ColorJump.css';
+import '../styles/GamesPlayers.css';
 
 const ColorJump = () => {
   return (
