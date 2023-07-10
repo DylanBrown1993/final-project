@@ -8,10 +8,15 @@ import './App.css';
 import MainReview from './components/MainReviews';
 import MainArticles from './components/MainArticles';
 import Review from './components/Review';
+<<<<<<< HEAD
 import Article from './components/Article';
 import Games from './components/Games'
 import Home from './components/Home';
 import { Navigation } from './components/Navigation';
+=======
+// import Home from './components/Home';
+import Navigation  from './components/Navigation';
+>>>>>>> 627247a6 (Create navigation and add css)
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';

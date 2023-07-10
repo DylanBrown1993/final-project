@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../styles/LoginRegister.css'
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ export const Login = (props) => {
       <h2 >Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <label form="email">Email</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="yourmail@gmail.com" id="email" name="email" />
         <label form="password">Password</label>
         <input value={password} onChange={(e) => setPassword(e.target.value)}type="email" placeholder="*******" id="password" name="password" />
         <button type="submit">Login</button>
