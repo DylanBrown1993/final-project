@@ -1,0 +1,15 @@
+.main-review-title {
+  text-align: center;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1px;
+}
+
+.review-item {
+  background-color: aqua;
+  padding: 20px;
+  text-align: center;
+}

@@ -1,9 +1,12 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import Review from './components/Review';
 import Home from './components/Home';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import MainReview from './components/MainReviews';
+import MainArticles from './components/MainArticles';
+import Review from './components/Review';
+import Article from './components/Article';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
 
 function App () {
@@ -20,7 +23,10 @@ function App () {
       <Router>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/reviews" element={<Review/>}/>
+          <Route path="/reviews" element={<MainReview/>}/>
+          <Route path="/review/:id" element={<Review/>}/>
+          <Route path="/articles" element={<MainArticles/>}/>
+          <Route path="/article/:id" element={<Article/>}/>
         </Routes>
       </Router>
     );
