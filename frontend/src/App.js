@@ -1,22 +1,15 @@
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-=======
 import React, { Component, useEffect, useState } from 'react';
->>>>>>> c5a32ca7 (Create login and register)
 import axios from 'axios';
 import './App.css';
 import MainReview from './components/MainReviews';
 import MainArticles from './components/MainArticles';
 import Review from './components/Review';
-<<<<<<< HEAD
 import Article from './components/Article';
 import Games from './components/Games'
 import Home from './components/Home';
 import { Navigation } from './components/Navigation';
-=======
-// import Home from './components/Home';
-import Navigation  from './components/Navigation';
->>>>>>> 627247a6 (Create navigation and add css)
+import Home from './components/Home';
+import Navigation from './components/Navigation';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -46,6 +39,7 @@ function App() {
       }
 
       <Router>
+        <Home />
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
