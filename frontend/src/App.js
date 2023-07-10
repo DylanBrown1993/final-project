@@ -6,6 +6,7 @@ import Games from './components/Games'
 import Home from './components/Home';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ColorJump from './components/ColorJump';
+import RunGame from './components/RunGame';
 
 
 function App () {
@@ -25,6 +26,7 @@ function App () {
           <Route path="/reviews" element={<Review/>}/>
           <Route path="/games" element={<Games/>}/>
           <Route path="/colorjump" element={<ColorJump/>}/>
+          <Route path="/rungame" element={<RunGame/>}/>
         </Routes>
       </Router>
     );

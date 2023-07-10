@@ -42,6 +42,11 @@ app.get('/colorjump', async (req, res) => {
   res.send(rows);
 });
 
+app.get('/rungame', async (req, res) => {
+  const { rows } = await client.query(`SELECT * FROM games`);
+  res.send(rows);
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
