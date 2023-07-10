@@ -11,7 +11,7 @@ const RunGame = () => {
         <div className='game-description'>
           <div className='game-title'>Run Game</div>
           Run Game is a simple platform where you control a running man! Dodge obstacles and collect items as you traverse through
-          different levels and landscapes.
+          different levels and landscapes. Control the runner using the arrow keys, and jump using the space bar.
         </div>
       </div>
     </div>

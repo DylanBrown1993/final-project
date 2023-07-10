@@ -1,5 +1,27 @@
+.background {
+  background-color: #588157;
+}
+
 h1.games-header {
 	font-family: 'Acme';
   display: flex;
   justify-content: center;
+}
+
+.games-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.games-list-container img {
+  max-width: 300px;
+  max-height: 300px;
+  margin: 10px;
+  border: .2em solid #3A5A40;
+}
+
+.games-list-container img:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transform: scale(1.02);
 }
