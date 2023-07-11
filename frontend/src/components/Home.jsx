@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from './Navigation';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../styles/Games.css';
 import '../styles/Fonts.css';
 import '../styles/Home.css';
@@ -11,6 +11,22 @@ import '../styles/MainArticles.css';
 import '../styles/MainReviews.css';
 
 const Home = () => {
+  const [art, setArt] = useState([]);
+  // const { id } = useParams();
+
+  useEffect(() => {
+    const getArt = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3001/art`);
+        setArt(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+    getArt();
+  }, []);
+
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -57,9 +73,9 @@ const Home = () => {
           {articles.map((article, index) => (
             <div key={article.id} className={`home-article-item ${index === 0 ? 'home-full-width' : 'home-grid-item'}`}>
               <Link to={`/article/${article.id}`}>
-                <div className={`home-main-article-background ${index === 0 ? 'home-main-article-first' : ''}`} style={{backgroundImage: `url(${article.header_image})`}} >
+                <div className={`home-main-article-background ${index === 0 ? 'home-main-article-first' : ''}`} style={{ backgroundImage: `url(${article.header_image})` }} >
                   <h2>{article.title}</h2>
-                    <p>{article.description}</p>
+                  <p>{article.description}</p>
                 </div>
               </Link>
             </div>
@@ -83,16 +99,28 @@ const Home = () => {
       </div>
       <div className="arts-container">
         <h2>Arts</h2>
+        <div className="art-grid">
+          {art.map(art => (
+            <div key={art.id} className="article-item">
+              <Link to={`/art/${art.id}`}>
+                <div style={{ backgroundImage: `url(${art.image})` }} className="main-art-background">
+                  <h2>{art.title}</h2>
+                  <p></p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="games-container">
         <h2>Games</h2>
-          <div className='games-list-container'>
-           <Link to="/rungame">
-              <img src={RunGameImage} alt="run-game-img" />
-            </Link>
-            <Link to="/colorjump">
-              <img src={ColorJumpImage} alt="color-jump-img" />
-            </Link>
+        <div className='games-list-container'>
+          <Link to="/rungame">
+            <img src={RunGameImage} alt="run-game-img" />
+          </Link>
+          <Link to="/colorjump">
+            <img src={ColorJumpImage} alt="color-jump-img" />
+          </Link>
         </div>
       </div>
     </div>
