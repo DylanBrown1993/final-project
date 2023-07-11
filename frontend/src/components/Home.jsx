@@ -41,7 +41,6 @@ const Home = () => {
 
   return (
     <div className='home-container'>
-      <Navigation/>
       <div className='home-banner-content'>
       </div>
       <div className='home-text-section'>

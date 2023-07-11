@@ -8,24 +8,29 @@ import Article from './components/Article';
 import Games from './components/Games'
 import Home from './components/Home';
 import Navigation from './components/Navigation';
+import Logout from './components/Logout';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RunGame from './components/RunGame';
 import ColorJump from './components/ColorJump';
 
+//df
+axios.defaults.withCredentials = true
+
 
 function App() {
   // make it into a separate file later
   useEffect(() => {
     const getUsers = async () => {
-      const res = await axios.get("http://localhost:3001/users");
+      const res = await axios.get("http://localhost:3001/users/info");
       console.log(res);
     };
     getUsers();
   }, []);
 
   const [currentForm, setCurrentForm] = useState("login");
+  const [user, setUser] = useState(null);
 
   const toggleForm = (formName) => {
     setCurrentForm(formName);
@@ -38,7 +43,7 @@ function App() {
       } */}
 
       <Router>
-        <Navigation />
+        <Navigation user={user} setUser={setUser}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/reviews" element={<MainReview />} />
@@ -49,8 +54,9 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/colorjump" element={<ColorJump />} />
           <Route path="/rungame" element={<RunGame />} />
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} /> */}
+          <Route path="/login" element={<Login setUser={setUser}/>} />
+          {/* <Route path="/logout" element={<Logout setUser={setUser}/>} /> */}
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </div>

@@ -3,12 +3,30 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { useRef, useState } from 'react';
 import '../styles/Navigation.css';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
-function Navigation() {
+function Navigation(props) {
 
   const navRef = useRef();
   const showNavBar = () => navRef.current.classList.toggle('responsive_nav');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const logoutUser = () => {
+
+    axios.post
+    ('http://localhost:3001/logout')
+    
+    .then(function (response) {
+      console.log(response);
+      props.setUser(null);
+      navigate("/");
+    })
+    .catch(function (error) {
+      console.log(error);
+    }); 
+  };
+  
+
 
   return (
     <header>
@@ -28,8 +46,11 @@ function Navigation() {
       <button className='nav-btn' onClick={showNavBar}>
         <FaBars/>
       </button>
-      {/* <Link to="/login">Login</Link>
-      {isLoggedIn ? null : <Link to="/register">Register</Link>} */}
+
+      
+      {props.user ? <div>{props.user.name} <button onClick={logoutUser}>Logout</button></div> : <Link to="/login">Login</Link>} 
+      {props.user ? null : <Link to="/register">Register</Link>}
+      
     </header>
   );
 }
