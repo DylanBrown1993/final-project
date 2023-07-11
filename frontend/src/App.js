@@ -10,23 +10,23 @@ import MainArt from './components/Art';
 import ArtImage from './components/ArtImage'
 import Home from './components/Home';
 import Navigation from './components/Navigation';
-import Logout from './components/Logout';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RunGame from './components/RunGame';
 import ColorJump from './components/ColorJump';
 
-//df
+
 axios.defaults.withCredentials = true
 
 
 function App() {
-  // make it into a separate file later
+
   useEffect(() => {
     const getUsers = async () => {
       const res = await axios.get("http://localhost:3001/users/info");
       console.log(res);
+      setUser(res.data);
     };
     getUsers();
   }, []);
@@ -38,6 +38,7 @@ function App() {
     setCurrentForm(formName);
   }
 
+
   return (
     <div className="App">
       {/* {
@@ -45,21 +46,20 @@ function App() {
       } */}
 
       <Router>
-        <Navigation user={user} setUser={setUser}/>
+        <Navigation user={user} setUser={setUser} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/reviews" element={<MainReview />} />
           <Route path="/review/:id" element={<Review />} />
           <Route path="/articles" element={<MainArticles />} />
           <Route path="/article/:id" element={<Article />} />
-          <Route path="/art" element={<MainArt/>}/>
-          <Route path="/art/:id" element={<ArtImage/>}/>
+          <Route path="/art" element={<MainArt />} />
+          <Route path="/art/:id" element={<ArtImage />} />
           <Route path="/reviews" element={<Review />} />
           <Route path="/games" element={<Games />} />
           <Route path="/colorjump" element={<ColorJump />} />
           <Route path="/rungame" element={<RunGame />} />
-          <Route path="/login" element={<Login setUser={setUser}/>} />
-          {/* <Route path="/logout" element={<Logout setUser={setUser}/>} /> */}
+          <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
