@@ -106,7 +106,8 @@ app.get('/art/:id', async (req, res) => {
   const artId = req.params.id;
 
   try {
-    const { rows } = await pool.query(`SELECT * FROM arts WHERE id = $1`, [artId]);
+    const { rows } = await pool.query(`SELECT * FROM arts, users WHERE arts.id = $1 AND arts.user_id = users.id`, [artId]);
+    
     if (rows.length === 0) {
       return res.status(404).json({ error: 'Art Not Found' });
     }

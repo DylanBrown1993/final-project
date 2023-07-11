@@ -28,7 +28,7 @@ const MainArt = () => {
               <div key={art.id} className="article-item">
                 <Link to={`/art/${art.id}`}>
                   <div style={{backgroundImage: `url(${art.image})`}} className="main-art-background">
-                    <h2>{art.title}</h2>
+                    <h2>{art.image}</h2>
                     <p></p>
                   </div>
                 </Link>
