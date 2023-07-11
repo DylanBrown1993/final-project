@@ -1,36 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Art = () => {
-  const [art, setArt] = useState(null);
-  const { id } = useParams();
+
+const MainArt = () => {
+  const [art, setArt] = useState([]);
 
   useEffect(() => {
-    const fetchArt = async () => {
+    const getArt = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/art`);
-        setArt(response.data);
+        const res = await axios.get("http://localhost:3001/art");
+        setArt(res.data);
       } catch (error) {
-        console.error('Error fetching art', error);
+        console.error('Error fetching data', error);
       }
     };
-
-    fetchArt();
-  }, [id]);
-
-  if (!art) {
-    return <div>Loading...</div>;
-  }
+    getArt();
+  }, []);
 
   return (
-    <div>
-      <h1>{art.title}</h1>
-      <img src={art.image} alt={art.title} />
-      <p>{art.time_stamp}</p>
-      <p>{art.user_id}</p>
+    <div className="main-art-route">
+      <div className="main-art-container">
+        <h1 className="main-art-title">Art</h1>
+        <div className="main-art-content">
+          <div className="art-grid">
+            {art.map(art => (
+              <div key={art.id} className="article-item">
+                <Link to={`/art/${art.id}`}>
+                  <div style={{backgroundImage: `url(${art.image})`}} className="main-art-background">
+                    <h2>{art.title}</h2>
+                    <p></p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
-
-export default Art;
+export default MainArt;

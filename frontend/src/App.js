@@ -6,7 +6,7 @@ import MainArticles from './components/MainArticles';
 import Review from './components/Review';
 import Article from './components/Article';
 import Games from './components/Games'
-import Art from './components/Art'
+import MainArt from './components/Art'
 import Home from './components/Home';
 import ColorJump from './components/ColorJump';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -31,7 +31,7 @@ function App () {
           <Route path="/review/:id" element={<Review/>}/>
           <Route path="/articles" element={<MainArticles/>}/>
           <Route path="/article/:id" element={<Article/>}/>
-          <Route path="/art" element={<Art/>}/>
+          <Route path="/art" element={<MainArt/>}/>
           <Route path="/reviews" element={<Review/>}/>
           <Route path="/games" element={<Games/>}/>
           <Route path="/colorjump" element={<ColorJump/>}/>
