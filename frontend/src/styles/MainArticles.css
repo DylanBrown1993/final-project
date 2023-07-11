@@ -6,17 +6,20 @@
   background-size: cover;
 }
 
-.main-article-background:before {
-  content: '';
+.blur-overlay {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-size: cover;
+  backdrop-filter: blur(8px); /* Adjust the blur amount as needed */
   z-index: 5;
-  backdrop-filter: blur(10px);
+}
+
+.article-title {
+  position: relative;
+  z-index: 10;
+  /* Additional styles for the article title */
 }
 
 .main-article-title {
@@ -34,5 +37,3 @@
   text-align: center;
   overflow: hidden;
 }
-
-

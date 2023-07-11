@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/MainArticles.css';
@@ -24,11 +24,17 @@ const MainArticle = () => {
         <h1 className="main-article-title">Articles</h1>
         <div className="main-article-content">
           <div className="article-grid">
-            {articles.map(article => (
+            {articles.map((article) => (
               <div key={article.id} className="article-item">
                 <Link to={`/article/${article.id}`}>
-                  <div style={{backgroundImage: `url(${article.header_image})`}} className="main-article-background">
-                    <h2>{article.title}</h2>
+                  <div
+                    style={{
+                      backgroundImage: `url(${article.header_image})`,
+                    }}
+                    className="main-article-background"
+                  >
+                    <div className="blur-overlay" />
+                    <h2 className="article-title">{article.title}</h2>
                     <p>{article.description}</p>
                   </div>
                 </Link>
@@ -40,4 +46,5 @@ const MainArticle = () => {
     </div>
   );
 };
+
 export default MainArticle;
