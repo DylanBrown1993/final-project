@@ -34,12 +34,11 @@ function Navigation(props) {
       <nav ref={navRef}>
         <a href="/">Home</a>
         &nbsp;
-        <a href="article">Article</a>
+        <a href="/articles">Article</a>
         &nbsp;
-        <a href="review">Review</a>
+        <a href="/reviews">Review</a>
         &nbsp;
-        <a href="games">Games</a>
-
+        <a href="/games">Games</a>
         <button className='nav-btn nav-close-btn' onClick={showNavBar}>
           <FaTimes/>
         </button>
