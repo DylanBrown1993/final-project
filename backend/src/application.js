@@ -137,6 +137,26 @@ app.get('/article/:id', async (req, res) => {
   }
 });
 
+app.get('/art', async (req, res) => {
+  const { rows } = await pool.query(`SELECT * FROM arts`);
+  res.send(rows)
+});
+
+app.get('/art/:id', async (req, res) => {
+  const artId = req.params.id;
+
+  try {
+    const { rows } = await pool.query(`SELECT * FROM arts WHERE id = $1`, [artId]);
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Art Not Found' });
+    }
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.get('/api/likes', async (req, res) => {
   try {
     const articleId = req.query.page;

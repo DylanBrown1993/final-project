@@ -39,6 +39,8 @@ function Navigation(props) {
         <a href="/reviews">Review</a>
         &nbsp;
         <a href="/games">Games</a>
+        &nbsp;
+        <a href="/art">Art</a>
         <button className='nav-btn nav-close-btn' onClick={showNavBar}>
           <FaTimes/>
         </button>
