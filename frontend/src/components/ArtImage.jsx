@@ -19,6 +19,11 @@ const Art = () => {
     getArt();
   }, [id]);
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   if (!art) {
     return <div> Art Not Found </div>;
   }
@@ -28,11 +33,11 @@ const Art = () => {
       <div className="art-container">
         <h1>Art</h1>
         <div className="art-info">
-          <p>{art.time_stamp}</p>
-          <div style={{backgroundImage: `url(${art.image})`}} className="art-background">
-            <h1>{art.title}</h1>
-            {/* change user_id? */}
-            <p>{art.user_id}</p>
+          <p>{formatDate(art.time_stamp)}</p>
+          <h1>{art.title}</h1>
+          <p>{art.username}</p>
+          <div className="art-background">
+            <img src={art.image}/>
           </div>
         </div>
       </div>
