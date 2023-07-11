@@ -229,12 +229,13 @@ app.post('/logout', (req, res) => {
 
 app.post('/register', async (req, res) => {
   const { name, username, email, password } = req.body;
+  console.log("req here", req.body);
 
   try {
 
     const hashedPassword = bcrypt.hashSync(password, 5);
-    const { rows } = await pool.query('INSERT INTO users (name, username, email, password) VALUES ($1, $2, $3, $4)', [name, username, email, hashedPassword]);
-    console.log(rows);
+    const { rows } = await pool.query('INSERT INTO users (name, username, email, password) VALUES ($1, $2, $3, $4) RETURNING *', [name, username, email, hashedPassword]);
+    console.log("rows here", rows);
     req.session.user_id = rows[0].id;
     res.status(201).json({
       message: 'User created successfully',
