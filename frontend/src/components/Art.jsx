@@ -27,9 +27,8 @@ const MainArt = () => {
             {art.map(art => (
               <div key={art.id} className="article-item">
                 <Link to={`/art/${art.id}`}>
-                  <div style={{backgroundImage: `url(${art.image})`}} className="main-art-background">
-                    <h2>{art.image}</h2>
-                    <p></p>
+                  <div className="main-art-background">
+                  <img src={art.image}/>
                   </div>
                 </Link>
               </div>
