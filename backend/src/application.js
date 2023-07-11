@@ -1,9 +1,16 @@
 const express = require("express");
 const { Pool } = require("pg");
 const cors = require("cors");
+const cookieSession = require("cookie-session");
+const bcrypt = require("bcrypt");
 const app = express()
 const port = 3001
 // const db = require("./db")
+
+app.use(cookieSession ({
+  name: "session",
+  keys: ['abc']
+}));
 
 const pool = new Pool({
   host: "localhost",
@@ -15,18 +22,49 @@ const pool = new Pool({
 
 pool.connect();
 
-app.use(cors());
+const corsConfig = {
+  origin: true,
+  credentials: true,
+};
+
+app.use(cors(corsConfig));
+app.options('*', cors(corsConfig))
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     console.log(origin);
+//       callback(null, origin)
+//   }, credentials: true
+// }
+// app.options('*', cors())
+// app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+
+const userAuth = (req, res, next) => {
+
+  const userid = req.session.user_id;
+  if (!userid) {
+    res.status(401).json({ error: "Must first log in" });
+    return;
+  }
+  next();
+}
 
 
 app.get('/', (req, res) => {
   res.json({message:"hello!"})
 })
 
-app.get('/users', async (req, res) => {
+app.get('/users', userAuth, async (req, res) => {
   const { rows } = await pool.query(`SELECT * FROM users`);
   res.send(rows)
+})
+
+app.get('/users/info', userAuth, async (req, res) => {
+  const userid = req.session.user_id;
+  const { rows } = await pool.query(`SELECT email, name, id FROM users WHERE id = $1`, [userid]);
+  res.json(rows[0])
 })
 
 app.get('/reviews', async (req, res) => {
@@ -129,11 +167,68 @@ app.get('/rungame', async (req, res) => {
   res.send(rows);
 });
 
-app.get('/login', async (req, res) => {'SELECT * FROM users WHERE email = $1 AND password = $2', [email, password]
-  res.send(rows);
-})
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
 
-app.get('/register', async (req, res) => {'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)', [name, email, password]})
+  try {
+    const { rows } = await pool.query(`SELECT * FROM users WHERE username = $1`, [username]); 
+    if (rows.length === 0) {
+      return res.status(401).json({error: 'Invalid email or password'});
+    }
+
+    const user = rows[0];
+
+    // const passwordValid = password === user.password;
+    const passwordValid = bcrypt.compareSync(password, user.password);
+    console.log(passwordValid);
+    console.log(user);
+    console.log(password);
+    if (!passwordValid) {
+      return res.status(401).json({error: 'Invalid email or password'});
+    }
+
+    req.session.user_id = rows[0].id;
+    res.json({
+      message: 'Login successful',
+      user: {
+        id: rows[0].id,
+        name: rows[0].name,
+        email: rows[0].email
+      }
+    });
+  } catch (error) {
+      console.error('Error executing login query', error);
+      res.status(500).json({ error: 'Internal server error'});
+  }
+});
+
+app.post('/logout', (req, res) => {
+  req.session = null;
+  res.json({ message: 'Logout successful'});
+});
+
+app.post('/register', async (req, res) => {
+  const { name, username, email, password } = req.body;
+
+  try {
+
+    const hashedPassword = bcrypt.hashSync(password, 5);
+    const { rows } = await pool.query('INSERT INTO users (name, username, email, password) VALUES ($1, $2, $3, $4)', [name, username, email, hashedPassword]);
+    console.log(rows);
+    req.session.user_id = rows[0].id;
+    res.status(201).json({
+      message: 'User created successfully',
+      user: {
+        id: rows[0].id,
+        name: rows[0].name,
+        email: rows[0].email
+      }
+    });
+  } catch (error) {
+    console.error('Error executing register query', error);
+    res.status(500).json({ error: 'Internal server error'});
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
