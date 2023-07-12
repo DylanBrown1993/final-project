@@ -207,15 +207,17 @@ app.get('/rungame', async (req, res) => {
 });
 
 app.get('/forums', async (req, res) => {
-  const { rows } = await pool.query(`SELECT * FROM forums`);
+  const { rows } = await pool.query(`SELECT forums.id AS id, title, body, user_id, username, time_stamp FROM forums JOIN users ON user_id = users.id`);
   res.send(rows)
 });
 
 app.post('/forums', async (req, res) => {
   const { title, body } = req.body;
+  const userId = req.session.user_id;
+  console.log("testing", req.session.user_id)
 
   try {
-    const { rows } = await pool.query(`INSERT INTO forums (title, body) VALUES ($1, $2) RETURNING *`, [title, body]);
+    const { rows } = await pool.query(`INSERT INTO forums (title, body, user_id) VALUES ($1, $2, $3) RETURNING *`, [title, body, userId]);
     res.redirect('/forums');
   } catch (error) {
     console.error('Error executing query', error);
@@ -230,6 +232,7 @@ app.get('/forums/:id', async (req, res) => {
 
   try {
     const { rows } = await pool.query(`SELECT * FROM forums WHERE id = $1`, [forumId]);
+    console.log("rows here", rows)
     if (rows.length === 0) {
       return res.status(404).json({ error: 'Forum Not Found' });
     }
@@ -238,6 +241,20 @@ app.get('/forums/:id', async (req, res) => {
     console.error('Error executing query', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+app.post('/forums/:id/comments', async (req, res) => {
+  const forumId = req.params.id;
+  const { body } = req.body;
+
+  try {
+    const { rows } = await pool.query(`INSERT INTO comments (body, forum_id) VALUES ($1, $2) RETURNING *`, [body, forumId]);
+    res.redirect(`/forums/${forumId}`);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+  
 });
 
 

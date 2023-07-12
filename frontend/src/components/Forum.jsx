@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-// import { get } from 'request';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const Forum = () => {
   const [forums, setForum] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -30,20 +31,28 @@ const Forum = () => {
     const res = await axios.post("http://localhost:3001/forums", {
       title,
       body
+    }).then(() => {
+      setTitle("");
+      setBody("");
+      getForum();
     })
 
-    getForum();
   };
 
+  console.log("forums here", forums)
+
+  //timestamp
+  //show user who posted
+  //forum topics from most recent to least recent
 
   return (
     <div>
-      <h1>Forum</h1>
+      <h1 className="forum-header">Forum</h1>
       <form onSubmit={submitData}>
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" onChange={(e)=>setTitle(e.target.value)}/>
+        <input value={title} type="text" id="title" name="title" onChange={(e)=>setTitle(e.target.value)}/>
         <label for="content">Body</label>
-        <textarea id="content" name="body" rows="4" cols="50" onInput={(e)=>setBody(e.target.value)}></textarea>
+        <textarea id="content" value={body} name="body" rows="4" cols="50" onChange={(e)=>setBody(e.target.value)}></textarea>
         <input type="submit" value="Submit"/>
 
       </form>
@@ -53,7 +62,11 @@ const Forum = () => {
             <Link to={`/forum/${forum.id}`}>
               <h2>{forum.title}</h2>
             </Link>
-            <p>{forum.description}</p>
+          <div className="forum-user>">
+            <a>Posted by: {forum.username}</a>
+            <a>Posted on: {forum.time_stamp}</a>
+          </div>
+            {/* <p>{forum.description}</p> */}
           </div>
         ))}
       </div>
