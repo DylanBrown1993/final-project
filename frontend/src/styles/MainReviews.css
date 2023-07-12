@@ -2,14 +2,32 @@
   text-align: center;
 }
 
-.review-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1px;
-}
 
 .review-item {
   background-color: #3A5A40;
   padding: 20px;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.review-item.home-review-full-width {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 2;
+}
+
+.review-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #3A5A40;
+  border-radius: 5px;
+  height: 200px;
 }

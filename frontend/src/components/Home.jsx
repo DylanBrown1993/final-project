@@ -93,9 +93,9 @@ const Home = () => {
         <div className="home-review-grid">
           {reviews.map((review, index) => (
             <div key={review.id} className={`home-review-item ${index === 0 ? 'home-review-full-width' : 'home-review-grid-item'}`}>
-              <Link to={`/review/${review.id}`}>
+              <Link to={`/review/${review.id}`}  className='review link'>
                 <div className={`home-review-content ${index === 0 ? 'home-review-first' : ''}`}>
-                  <h2>{review.title}</h2>
+                  <h2 className="review-title">{review.title}</h2>
                   <p>{review.description}</p>
                 </div>
               </Link>
