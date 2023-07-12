@@ -76,12 +76,14 @@ const Home = () => {
         <div className="home-article-grid">
           {articles.map((article, index) => (
             <div key={article.id} className={`home-article-item ${index === 0 ? 'home-full-width' : 'home-grid-item'}`}>
-          <Link to={`/article/${article.id}`}>
-            <div className="article-container">
-              <div className="article-image" style={{ backgroundImage: `url(${article.header_image})` }}></div>
-              <h2 className="article-title">{article.title}</h2>
-            </div>
-          </Link>
+              <Link to={`/article/${article.id}`} className='article-link'>
+                <div className={`home-article-content ${index === 0 ? 'home-article-first' : ''}`}>
+                  <div className="article-image-container">
+                    <img src={article.header_image} alt="" className="article-image" />
+                  </div>
+                  <h2 className="article-title">{article.title}</h2>
+                </div>
+              </Link>
             </div>
           ))}
         </div>
