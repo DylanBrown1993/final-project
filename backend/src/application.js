@@ -29,14 +29,6 @@ const corsConfig = {
 
 app.use(cors(corsConfig));
 app.options('*', cors(corsConfig))
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     console.log(origin);
-//       callback(null, origin)
-//   }, credentials: true
-// }
-// app.options('*', cors())
-// app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -157,6 +149,12 @@ app.get('/art/:id', async (req, res) => {
   }
 });
 
+// app.get('/chat', async (req, res) => {
+//   const { rows } = await pool.query(`SELECT * FROM chats`);
+//   res.send(rows)
+// });
+
+
 app.get('/api/likes', async (req, res) => {
   try {
     const articleId = req.query.page;
@@ -202,10 +200,46 @@ app.post('/api/ratings', async (req, res) => {
     res.status(500).json({ error: 'Error updating rating'});
   }
 });
+
 app.get('/rungame', async (req, res) => {
   const { rows } = await client.query(`SELECT * FROM games`);
   res.send(rows);
 });
+
+app.get('/forums', async (req, res) => {
+  const { rows } = await pool.query(`SELECT * FROM forums`);
+  res.send(rows)
+});
+
+app.post('/forums', async (req, res) => {
+  const { title, body } = req.body;
+
+  try {
+    const { rows } = await pool.query(`INSERT INTO forums (title, body) VALUES ($1, $2) RETURNING *`, [title, body]);
+    res.redirect('/forums');
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+  
+});
+
+app.get('/forums/:id', async (req, res) => {
+  const forumId = req.params.id;
+  console.log("another test", forumId);
+
+  try {
+    const { rows } = await pool.query(`SELECT * FROM forums WHERE id = $1`, [forumId]);
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Forum Not Found' });
+    }
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;

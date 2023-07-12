@@ -11,6 +11,7 @@ import '../styles/MainArticles.css';
 import '../styles/MainReviews.css';
 
 const Home = () => {
+
   const [art, setArt] = useState([]);
   // const { id } = useParams();
 

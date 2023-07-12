@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/application.js",
     "server": "nodemon src/application.js"
+    
   },
   "keywords": [],
   "author": "",
