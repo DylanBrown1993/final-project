@@ -31,7 +31,6 @@ const MainArticle = () => {
                 <div className="article-container">
                   <div className="article-image" style={{ backgroundImage: `url(${article.header_image})` }}></div>
                   <h2 className="article-title">{article.title}</h2>
-                  <p>{article.description}</p>
                 </div>
               </Link>
               </div>

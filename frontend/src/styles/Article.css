@@ -22,11 +22,18 @@
 }
 
 .article-image {
-  max-width: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: .2em solid #3A5A40;
   height: 300px;
   padding-bottom: 60%; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   filter: brightness(15%); 
+}
+
+div.article-image :hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transform: scale(1.02);
 }

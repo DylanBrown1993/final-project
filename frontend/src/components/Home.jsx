@@ -7,6 +7,7 @@ import '../styles/Fonts.css';
 import '../styles/Home.css';
 import '../styles/Art.css';
 import '../styles/Article.css';
+import '../styles/Navigation.css';
 import RunGameImage from '../../../src/images/RunGame.png';
 import ColorJumpImage from '../../../src/images/ColorJump.png';
 import '../styles/MainArticles.css';
@@ -79,7 +80,6 @@ const Home = () => {
             <div className="article-container">
               <div className="article-image" style={{ backgroundImage: `url(${article.header_image})` }}></div>
               <h2 className="article-title">{article.title}</h2>
-              <p>{article.description}</p>
             </div>
           </Link>
             </div>
