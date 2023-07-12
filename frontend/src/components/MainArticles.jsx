@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/MainArticles.css';
+import '../styles/Article.css';
 
 const MainArticle = () => {
   const [articles, setArticles] = useState([]);
@@ -27,13 +28,8 @@ const MainArticle = () => {
             {articles.map(article => (
               <div key={article.id} className="article-item">
               <Link to={`/article/${article.id}`}>
-                <div 
-                style={{
-                  backgroundImage: `url(${article.header_image})`,
-                }}
-                className="main-article-background"
-                >
-                  <div className="blur-overlay" />
+                <div className="article-container">
+                  <div className="article-image" style={{ backgroundImage: `url(${article.header_image})` }}></div>
                   <h2 className="article-title">{article.title}</h2>
                   <p>{article.description}</p>
                 </div>

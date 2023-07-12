@@ -3,6 +3,22 @@
   margin-bottom: 200px;
 }
 
+div.home-container {
+  width: 85%;
+}
+
+.home-article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.home-article-item.home-full-width {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 2;
+}
+
+
 .home-review-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

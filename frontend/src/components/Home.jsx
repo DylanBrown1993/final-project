@@ -6,10 +6,12 @@ import '../styles/Games.css';
 import '../styles/Fonts.css';
 import '../styles/Home.css';
 import '../styles/Art.css';
+import '../styles/Article.css';
 import RunGameImage from '../../../src/images/RunGame.png';
 import ColorJumpImage from '../../../src/images/ColorJump.png';
 import '../styles/MainArticles.css';
 import '../styles/MainReviews.css';
+
 
 const Home = () => {
   const [art, setArt] = useState([]);
@@ -73,18 +75,13 @@ const Home = () => {
         <div className="home-article-grid">
           {articles.map((article, index) => (
             <div key={article.id} className={`home-article-item ${index === 0 ? 'home-full-width' : 'home-grid-item'}`}>
-              <Link to={`/article/${article.id}`}>
-                <div 
-                style={{
-                  backgroundImage: `url(${article.header_image})`,
-                }}
-                className="main-article-background"
-                >
-                  <div className="blur-overlay" />
-                  <h2 className="article-title">{article.title}</h2>
-                  <p>{article.description}</p>
-                </div>
-              </Link>
+          <Link to={`/article/${article.id}`}>
+            <div className="article-container">
+              <div className="article-image" style={{ backgroundImage: `url(${article.header_image})` }}></div>
+              <h2 className="article-title">{article.title}</h2>
+              <p>{article.description}</p>
+            </div>
+          </Link>
             </div>
           ))}
         </div>
