@@ -55,6 +55,29 @@
   grid-row: 1 / span 2;
 }
 
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.main-art-background {
+  display: flex;
+}
+
+.art-image {
+  max-height: 200px;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  transition: filter 0.3s ease-in-out;
+}
+
+.art-image:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transform: scale(1.02);
+}
+
 .home-review-content {
   display: flex;
   flex-direction: column;

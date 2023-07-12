@@ -98,19 +98,22 @@ const Home = () => {
         </div>
       </div>
       <div className="arts-container">
-        <h2>Arts</h2>
-        <div className="art-grid">
-          {art.map(art => (
-            <div key={art.id} className="article-item">
-              <Link to={`/art/${art.id}`}>
-                <div className="main-art-background">
-                  <img src={art.image}/>
-                </div>
-              </Link>
+  <h2>Art</h2>
+  <div className="art-grid">
+    {art.map((art) => (
+      <div key={art.id} className="art-item">
+        <Link to={`/art/${art.id}`}>
+          <div className="main-art-background">
+            <img src={art.image} className="art-image" alt="Art Image" />
+            <div className="art-details">
+              <span className="art-username">{art.username}</span>
             </div>
-          ))}
-        </div>
+          </div>
+        </Link>
       </div>
+    ))}
+  </div>
+</div>
       <div className="games-container">
         <h2>Games</h2>
         <div className='games-list-container'>
