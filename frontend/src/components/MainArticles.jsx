@@ -26,12 +26,18 @@ const MainArticle = () => {
           <div className="article-grid">
             {articles.map(article => (
               <div key={article.id} className="article-item">
-                <Link to={`/article/${article.id}`}>
-                  <div style={{backgroundImage: `url(${article.header_image})`}} className="main-article-background">
-                    <h2>{article.title}</h2>
-                    <p>{article.description}</p>
-                  </div>
-                </Link>
+              <Link to={`/article/${article.id}`}>
+                <div 
+                style={{
+                  backgroundImage: `url(${article.header_image})`,
+                }}
+                className="main-article-background"
+                >
+                  <div className="blur-overlay" />
+                  <h2 className="article-title">{article.title}</h2>
+                  <p>{article.description}</p>
+                </div>
+              </Link>
               </div>
             ))}
           </div>

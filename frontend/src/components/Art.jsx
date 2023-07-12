@@ -25,10 +25,10 @@ const MainArt = () => {
         <div className="main-art-content">
           <div className="art-grid">
             {art.map(art => (
-              <div key={art.id} className="article-item">
+              <div key={art.id} className="art-item">
                 <Link to={`/art/${art.id}`}>
                   <div className="main-art-background">
-                  <img src={art.image}/>
+                  <img src={art.image} className="art-image" alt="Art Image" />
                   </div>
                 </Link>
               </div>

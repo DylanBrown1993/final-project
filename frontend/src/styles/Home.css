@@ -3,43 +3,6 @@
   margin-bottom: 200px;
 }
 
-.home-article-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.home-article-item {
-  margin-bottom: 20px;
-}
-
-.home-article-item.home-full-width {
-  grid-column: 1 / -1;
-  grid-row: 1 / span 2;
-}
-
-.home-main-article-background {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: auto;
-}
-
-.home-article-item:not(.home-full-width) .home-main-article-background {
-  height: 200px;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.home-main-article-first {
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .home-review-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -53,29 +16,6 @@
 .home-review-item.home-review-full-width {
   grid-column: 1 / -1;
   grid-row: 1 / span 2;
-}
-
-.art-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.main-art-background {
-  display: flex;
-}
-
-.art-image {
-  max-height: 200px;
-  max-width: 200px;
-  height: auto;
-  display: block;
-  transition: filter 0.3s ease-in-out;
-}
-
-.art-image:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  transform: scale(1.02);
 }
 
 .home-review-content {

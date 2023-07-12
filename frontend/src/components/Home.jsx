@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import '../styles/Games.css';
 import '../styles/Fonts.css';
 import '../styles/Home.css';
+import '../styles/Art.css';
 import RunGameImage from '../../../src/images/RunGame.png';
 import ColorJumpImage from '../../../src/images/ColorJump.png';
 import '../styles/MainArticles.css';
@@ -73,8 +74,14 @@ const Home = () => {
           {articles.map((article, index) => (
             <div key={article.id} className={`home-article-item ${index === 0 ? 'home-full-width' : 'home-grid-item'}`}>
               <Link to={`/article/${article.id}`}>
-                <div className={`home-main-article-background ${index === 0 ? 'home-main-article-first' : ''}`} style={{ backgroundImage: `url(${article.header_image})` }} >
-                  <h2>{article.title}</h2>
+                <div 
+                style={{
+                  backgroundImage: `url(${article.header_image})`,
+                }}
+                className="main-article-background"
+                >
+                  <div className="blur-overlay" />
+                  <h2 className="article-title">{article.title}</h2>
                   <p>{article.description}</p>
                 </div>
               </Link>

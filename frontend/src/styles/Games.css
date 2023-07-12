@@ -12,11 +12,13 @@ h1.games-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 
 .games-list-container img {
   max-width: 300px;
   max-height: 300px;
+  border-radius: 5px;
   margin: 10px;
   border: .2em solid #3A5A40;
 }
