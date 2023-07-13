@@ -68,9 +68,8 @@
   text-decoration: none;
 }
 
-.main-article-content:hover {
+.home-article-content:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   transform: scale(1.02);
 }
-
 

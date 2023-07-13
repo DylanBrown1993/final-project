@@ -38,6 +38,28 @@ div.home-container {
   width: 100%;
 }
 
+.home-article-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #3A5A40;
+  border-radius: 5px;
+  height: 200px;
+}
+
+.home-article-first {
+  position: relative;
+  background-color: #3A5A40;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .home-article-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

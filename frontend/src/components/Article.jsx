@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import ArticleLikes from "./ArticleLikes.jsx";
+import ArticleLikes from "./ArticleLikes";
 import "../styles/Article.css";
 
 const Article = () => {
   const [article, setArticle] = useState(null);
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const getArticle = async () => {
       try {
@@ -16,10 +16,11 @@ const Article = () => {
         setArticle(res.data);
       } catch (error) {
         console.error("Error fetching data", error);
+      } finally {
+        setLoading(false);
       }
     };
     getArticle();
-    setLoading(false);
   }, [id]);
 
   const formatDate = (dateString) => {
@@ -27,35 +28,38 @@ const Article = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
- return (
-    (loading) ? (
-      <div>Article Loading...</div>
-    ) : (
-      (article) ? (
-        <div className="article-route">
-        <div className="article-container">
-          <h1>Article</h1>
-          <div className="article-info">
-            <p>{formatDate(article.time_stamp)}</p>
-            <div
-              style={{ backgroundImage: `url(${article.header_image})` }}
-              className="article-background"
-              >
-              <h1>{article.title}</h1>
-              <p>{article.username}</p>
-              <p>{article.description}</p>
-            </div>
-            <p>{article.body}</p>
-            <ArticleLikes articleId={id} />
+  if (loading) {
+    return <div>Article Loading...</div>;
+  }
+
+  if (!article) {
+    return <div>Not found</div>;
+  }
+
+  return (
+    <div className="id-article-route">
+      <div className="id-article-container">
+        <div className="id-article-image-container">
+          <img
+            src={article.header_image}
+            alt=""
+            className="id-article-image"
+          />
+          <div className="id-article-info-overlay">
+            <h1 className="id-article-title">{article.title}</h1>
+            <p className="id-article-username">{article.username}</p>
+            <p className="id-article-description">{article.description}</p>
           </div>
         </div>
+        <div className="id-article-body-container">
+          <div className="id-article-body">{article.body}</div>
+        </div>
+        <div className="id-article-likes-container">
+          <ArticleLikes articleId={id} />
+        </div>
       </div>
-      )
-      :
-      (<div>
-        Not found
-      </div>)
-    )
-  )
+    </div>
+  );
 };
+
 export default Article;

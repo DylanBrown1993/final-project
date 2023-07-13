@@ -45,7 +45,7 @@ function Navigation(props) {
       </nav>
 
       {props.user ? (
-        <div>
+        <div className='user-text'>
           {props.user.name}{' '}
           <button className="logout-btn" onClick={logoutUser}>
             Logout
