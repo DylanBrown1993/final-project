@@ -61,8 +61,8 @@ const ForumComments = (props) => {
     <form>
       <div className="forum-item-comments">
         <button onClick={updateComment} type="submit" value="Submit">Comment</button>
-        {comments.map((comment) => (
-          <p className="comment">{comment.body}, {comment.username}, {comment.time_stamp}</p>
+        {comments.map((comment, i) => (
+          <p key={i} className="comment">{comment.body}, {comment.username}, {new Date (comment.time_stamp).toLocaleString()}</p>
         ))}
       </div>
     </form>
