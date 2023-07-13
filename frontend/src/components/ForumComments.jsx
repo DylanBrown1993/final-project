@@ -9,6 +9,7 @@ const ForumComments = (props) => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
+
   useEffect(() => {
     axios.get(`http://localhost:3001/forums/${props.id}/comments/`)
       .then(res => {
@@ -23,15 +24,29 @@ const ForumComments = (props) => {
 
   const updateComment = (e) => {
     e.preventDefault();
-    setComments([...comments, comment]);
-    setComment("");
+
+    console.log("commments", comments);
 
     axios.post(`http://localhost:3001/forums/${props.id}/comments/`, {
       comment
     })
+      .then(() => {
+        axios.get(`http://localhost:3001/forums/${props.id}/comments/`)
+          .then(res => {
+
+            setComments(res.data);
+          })
+
+          .catch(error => {
+            console.log(error);
+          })
+      })
+    setComment("");
 
   };
-  console.log("comment", comment);
+
+  console.log("comments", comments);
+
   return <div>
 
     <h4>Comments</h4>

@@ -201,7 +201,7 @@ app.get('/rungame', async (req, res) => {
 });
 
 app.get('/forums', async (req, res) => {
-  const { rows } = await pool.query(`SELECT forums.id AS id, title, body, user_id, username, time_stamp FROM forums JOIN users ON user_id = users.id`);
+  const { rows } = await pool.query(`SELECT forums.id AS id, title, body, user_id, username, time_stamp FROM forums JOIN users ON user_id = users.id ORDER BY time_stamp DESC`);
   res.send(rows)
 });
 
@@ -258,7 +258,7 @@ app.get('/forums/:id/comments', async (req, res) => {
   const forumId = req.params.id;
 
   try {
-    const { rows } = await pool.query(`SELECT username, forum_comments.* FROM forum_comments JOIN users ON user_id = users.id WHERE forum_id = $1`, [forumId]);
+    const { rows } = await pool.query(`SELECT username, forum_comments.* FROM forum_comments JOIN users ON user_id = users.id WHERE forum_id = $1 ORDER BY time_stamp DESC`, [forumId]);
     res.json(rows);
   } catch (error) {
     console.error('Error executing query', error);
