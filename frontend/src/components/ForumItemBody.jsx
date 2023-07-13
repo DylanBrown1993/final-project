@@ -26,6 +26,8 @@ const { id } = useParams();
 
   return <div>
     <h1 className="forum-item-title">{forumItem.title}</h1>
+      <p> Posted by: {forumItem.username} </p>
+      <p> Posted by: {new Date (forumItem.time_stamp).toLocaleString()} </p>
       <p 
       className="forum-item-body" style={{marginTop:"50px"}}>{forumItem.body} 
       </p>

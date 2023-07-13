@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import '../styles/ForumComments.css';
 
 
 const ForumComments = (props) => {
@@ -61,9 +62,11 @@ const ForumComments = (props) => {
     <form>
       <div className="forum-item-comments">
         <button onClick={updateComment} type="submit" value="Submit">Comment</button>
+        <div className="forum-each-comment">
         {comments.map((comment, i) => (
           <p key={i} className="comment">{comment.body}, {comment.username}, {new Date (comment.time_stamp).toLocaleString()}</p>
         ))}
+        </div>
       </div>
     </form>
 

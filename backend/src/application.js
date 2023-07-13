@@ -225,7 +225,7 @@ app.get('/forums/:id', async (req, res) => {
   console.log("another test", forumId);
 
   try {
-    const { rows } = await pool.query(`SELECT * FROM forums WHERE id = $1`, [forumId]);
+    const { rows } = await pool.query(`SELECT * FROM forums JOIN users ON user_id = users.id WHERE forums.id = $1`, [forumId]);
     console.log("rows here", rows)
     if (rows.length === 0) {
       return res.status(404).json({ error: 'Forum Not Found' });
