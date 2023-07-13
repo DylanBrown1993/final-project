@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../styles/Article.css";
 
-const LikeButton = ({articleId}) => {
+const LikeButton = ({ articleId }) => {
   const [likes, setLikes] = useState(0);
 
   const fetchLikesCount = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/likes?page=${articleId}`)
+      const response = await axios.get(`http://localhost:3001/api/likes?page=${articleId}`);
       setLikes(response.data.likes);
     } catch (error) {
-      console.error ('Error fetching likes count:', error)
+      console.error('Error fetching likes count:', error);
     }
   };
 
@@ -23,7 +24,7 @@ const LikeButton = ({articleId}) => {
       await axios.post(`http://localhost:3001/api/likes?page=${articleId}`, { count: updatedCount });
       setLikes(updatedCount);
     } catch (error) {
-      console.error ('Error incrementing likes count:', error)
+      console.error('Error incrementing likes count:', error);
     }
   };
 
@@ -33,8 +34,8 @@ const LikeButton = ({articleId}) => {
 
   return (
     <div>
-      <button onClick={handleLike}>Like</button>
-      <p>{likes} {likes === 1 ? 'person likes' : 'people like'} this</p>
+      <button className="like-button" onClick={handleLike}>Like</button>
+      <p className='number-likes'>{likes} {likes === 1 ? 'person likes' : 'people like'} this</p>
     </div>
   );
 };

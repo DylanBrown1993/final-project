@@ -1,58 +1,81 @@
-.home-article-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: #3A5A40;
-  border-radius: 5px;
-  height: 200px;
-}
-
-.home-article-first {
-  position: relative;
-  background-color: #3A5A40;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.article-image-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.id-article-image-container {
+  width: 100vw;
+  height: 31.25em;
   border-radius: 5px;
   overflow: hidden;
-}
-
-.article-image {
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: 7.5em;
+}
+
+.id-article-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(80%);
+  filter: brightness(40%);
 }
 
-.article-title {
+.id-article-info-overlay {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1.25em;
+}
+
+.id-article-title {
   color: white;
-  font-size: 24px;
+  font-size: 1.75em;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 9.25em;
+}
+
+.id-article-username,
+.id-article-description {
+  color: white;
+  font-size: 1.125em;
+  margin-top: 0.625em;
+}
+
+.id-article-body-container {
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 34em;
+  padding: 2em;
+  border: 0.013em solid #3A5A40;
+  background-color: #DAD7CD;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.like-button {
+  font-size: 24px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: url('../../../src/images/LilyButton.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
   text-decoration: none;
+  cursor: pointer;
+  width: 82px;
 }
 
-.article-link {
-  text-decoration: none;
-}
-
-.home-article-content:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  transform: scale(1.02);
+.number-likes {
+  font-size: 10px;
 }
 
 
+.id-article-likes-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.125em; 
+}

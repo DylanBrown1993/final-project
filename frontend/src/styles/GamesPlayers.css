@@ -8,7 +8,7 @@
   margin-left: 17.5%;
   margin-right: 17.5%;
   padding: 2em;
-  border: .2em solid #3A5A40;
+  border: 0.013em solid #3A5A40;
   background-color: #DAD7CD;
   display: flex;
   font-family: 'Abeezee';
@@ -16,16 +16,15 @@
   align-items: center;
 }
 
-
 .game-title {
   text-align: center;
-  font-size: 23px;
+  font-size: 1.4375em;
   padding-bottom: 1em;
 }
 
 .game-description {
-  font-size: 8px;
+  font-size: 1.5em;
   text-align: center;
-  margin-left: 5%;
-  margin-right: 5%
+  margin-left: 0.3125em;
+  margin-right: 0.3125em;
 }
