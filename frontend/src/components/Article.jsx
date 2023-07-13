@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ArticleLikes from "./ArticleLikes";
-import "../styles/Article.css";
+
 
 const Article = () => {
   const [article, setArticle] = useState(null);

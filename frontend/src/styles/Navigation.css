@@ -26,7 +26,10 @@ header {
   gap: 5px;
 }
 
-.nav-link {
+.nav-link-1,
+.nav-link-2,
+.nav-link-3,
+.nav-link-4 {
   background-image: url('../../../src/images/LilyButton.png');
   background-size: contain;
   background-position: center;
@@ -39,7 +42,6 @@ header {
   width: 82px;
   cursor: pointer;
 }
-
 
 .navbar-links {
   font-size: 24px;

@@ -3,7 +3,9 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25em; 
 }
-
+h2 {
+  padding-top: 1em;
+}
 .main-article-item.home-full-width {
   grid-column: 1 / -1;
   grid-row: 1 / span 2;

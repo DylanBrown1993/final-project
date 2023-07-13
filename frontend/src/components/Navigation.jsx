@@ -31,24 +31,24 @@ function Navigation(props) {
         <img src={logoImage} alt="Ribbit" className="logo" />
       </Link>
       <nav className="navbar-links" ref={navRef}>
-        <NavLink
-          exact
-          to="/articles"
-          activeClassName="active"
-          className="nav-link"
-        >
-          Articles
-        </NavLink>
-        <NavLink to="/reviews" activeClassName="active" className="nav-link">
-          Reviews
-        </NavLink>
-        <NavLink to="/games" activeClassName="active" className="nav-link">
-          Games
-        </NavLink>
-        <NavLink to="/art" activeClassName="active" className="nav-link">
-          Art
-        </NavLink>
-      </nav>
+      <NavLink
+        exact
+        to="/articles"
+        activeClassName="active"
+        className="nav-link-1"
+      >
+        Articles
+      </NavLink>
+      <NavLink to="/reviews" activeClassName="active" className="nav-link-2">
+        Reviews
+      </NavLink>
+      <NavLink to="/games" activeClassName="active" className="nav-link-3">
+        Games
+      </NavLink>
+      <NavLink to="/art" activeClassName="active" className="nav-link-4">
+        Art
+      </NavLink>
+    </nav>
 
 
       {props.user ? (
