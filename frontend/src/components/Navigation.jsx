@@ -1,58 +1,65 @@
 import React from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import '../styles/Navigation.css';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Navigation(props) {
-
   const navRef = useRef();
   const showNavBar = () => navRef.current.classList.toggle('responsive_nav');
   const navigate = useNavigate();
+
   const logoutUser = () => {
-
-    axios.post
-    ('http://localhost:3001/logout')
-    
-    .then(function (response) {
-      console.log(response);
-      props.setUser(null);
-      navigate("/");
-    })
-    .catch(function (error) {
-      console.log(error);
-    }); 
+    axios
+      .post('http://localhost:3001/logout')
+      .then(function (response) {
+        console.log(response);
+        props.setUser(null);
+        navigate('/');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
-  
-
 
   return (
     <header>
-      <h3>Ribbit</h3>
-      <nav ref={navRef}>
-        <a href="/">Home</a>
-        &nbsp;
-        <a href="/articles">Article</a>
-        &nbsp;
-        <a href="/reviews">Review</a>
-        &nbsp;
-        <a href="/games">Games</a>
-        &nbsp;
-        <a href="/art">Art</a>
-        <button className='nav-btn nav-close-btn' onClick={showNavBar}>
-          <FaTimes/>
-        </button>
+      <Link to="/" className="logo-link">
+        <h3 className="logo">Ribbit</h3>
+      </Link>
+      <nav className="navbar-links" ref={navRef}>
+        <NavLink exact to="/" activeClassName="active">
+          Articles
+        </NavLink>
+        <NavLink to="/reviews" activeClassName="active">
+          Reviews
+        </NavLink>
+        <NavLink to="/games" activeClassName="active">
+          Games
+        </NavLink>
+        <NavLink to="/art" activeClassName="active">
+          Art
+        </NavLink>
       </nav>
-      <button className='nav-btn' onClick={showNavBar}>
-        <FaBars/>
-      </button>
 
-      
-      {props.user ? <div>{props.user.name} <button onClick={logoutUser}>Logout</button></div> : <Link to="/login">Login</Link>} 
-      {props.user ? null : <Link to="/register">Register</Link>}
-      
+      {props.user ? (
+        <div>
+          {props.user.name}{' '}
+          <button className="logout-btn" onClick={logoutUser}>
+            Logout
+          </button>
+        </div>
+      ) : (
+        <div className="button-container">
+          <Link to="/login" className="login-btn">
+            Login
+          </Link>
+          <Link to="/register" className="register-btn">
+            Register
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
