@@ -15,7 +15,13 @@ import { Register } from './components/Register';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RunGame from './components/RunGame';
 import ColorJump from './components/ColorJump';
+<<<<<<< HEAD
 import SubmitArt from './components/SubmitArt';
+=======
+import Forum from './components/Forum';
+import ForumItemBody from './components/ForumItemBody';
+// import ForumComments from './components/ForumComments';
+>>>>>>> fc68a690687a96e77eb21388c0d4d2e52f78b76d
 
 axios.defaults.withCredentials = true
 
@@ -60,6 +66,9 @@ function App() {
           <Route path="/colorjump" element={<ColorJump />} />
           <Route path="/rungame" element={<RunGame />} />
           <Route path="/submitart" element={<SubmitArt />} />
+          <Route path="/forum/:id" exact element={<ForumItemBody />} />
+          <Route path="/forum" exact element={<Forum />} />
+          {/* <Route path="/forum/:id/:commentId" element={<ForumComments />} /> */}
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
         </Routes>

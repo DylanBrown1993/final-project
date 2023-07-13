@@ -17,6 +17,7 @@ import ColorJumpImage from '../../../src/images/ColorJump.png';
 
 
 const Home = () => {
+
   const [art, setArt] = useState([]);
   // const { id } = useParams();
 
