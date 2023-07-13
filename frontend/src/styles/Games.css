@@ -3,7 +3,7 @@
 }
 
 h1.games-header {
-	font-family: 'Acme';
+  font-family: 'Acme';
   display: flex;
   justify-content: center;
 }
@@ -12,18 +12,18 @@ h1.games-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 1.25em;
 }
 
 .games-list-container img {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 18.75em;
+  max-height: 18.75em;
   border-radius: 5px;
-  margin: 10px;
-  border: .2em solid #3A5A40;
+  margin: 0.625em;
+  border: 0.013em solid #3A5A40;
 }
 
 .games-list-container img:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0.313em rgba(0, 0, 0, 0.5);
   transform: scale(1.02);
 }

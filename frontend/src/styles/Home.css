@@ -4,17 +4,17 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 700px;
-  padding-top: 200px;
+  height: 43.75em; 
+  padding-top: 12.5em; 
   background-image: url('../../../src/images/TitleLogo.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size:30%;
+  background-size: 43.6875em; 
 }
 
 .home-text {
   width: 100%;
-  font-size: 30px;
+  font-size: 1.875em; 
   color: white;
   opacity: 100%;
   display: flex;
@@ -22,16 +22,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 100px; 
-  box-sizing: border-box; 
-  padding-bottom: 120px;
+  padding: 0 6.25em; 
+  box-sizing: border-box;
+  padding-bottom: 2.5em;
 }
 
-
 h2 {
-  font-size: 50px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  font-size: 3.125em;
+  margin-top: 2.125em; 
+  margin-bottom: 2.125em; 
 }
 
 div.home-container {
@@ -44,16 +43,16 @@ div.home-container {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  padding: 20px;
+  padding: 1.25em;
   background-color: #3A5A40;
-  border-radius: 5px;
-  height: 200px;
+  border-radius: 0.3125em; 
+  height: 12.5em; 
 }
 
 .home-article-first {
   position: relative;
   background-color: #3A5A40;
-  height: 400px;
+  height: 25em; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +62,7 @@ div.home-container {
 .home-article-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 1.25em;
   padding-left: 7.5%;
   padding-right: 7.5%;
 }
@@ -73,11 +72,15 @@ div.home-container {
   grid-row: 1 / span 2;
 }
 
+.home-review-content:hover {
+  box-shadow: 0 0 0.3125em rgba(0, 0, 0, 0.5); 
+  transform: scale(1.02);
+}
 
 .home-review-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-gap: 1.25em; 
   padding-left: 7.5%;
   padding-right: 7.5%;
 }
@@ -88,7 +91,7 @@ div.art-grid {
 }
 
 .home-review-item {
-  margin-bottom: 20px;
+  margin-bottom: 1.25em; 
 }
 
 .home-review-item.home-review-full-width {
@@ -101,17 +104,14 @@ div.art-grid {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  padding: 20px;
+  padding: 1.25em;
   background-color: #3A5A40;
-  border-radius: 5px;
-  height: 200px;
+  border-radius: 0.3125em;
+  height: 12.5em; 
 }
 
 .home-review-first {
   background-color: #3A5A40;
-  height: 400px;
+  height: 25em; 
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }

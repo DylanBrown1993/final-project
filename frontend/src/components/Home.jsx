@@ -6,7 +6,6 @@ import '../styles/Games.css';
 import '../styles/Fonts.css';
 import '../styles/Home.css';
 import '../styles/Art.css';
-import '../styles/Review.css';
 import '../styles/Navigation.css';
 import '../styles/MainReviews.css';
 import RunGameImage from '../../../src/images/RunGame.png';
