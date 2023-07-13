@@ -3,14 +3,15 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const Forum = () => {
+const Forum = (props) => {
   const [forums, setForum] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const navigate = useNavigate();
-
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = false;
   useEffect(() => {
-    
+
     getForum();
   }, []);
 
@@ -39,34 +40,37 @@ const Forum = () => {
 
   };
 
-  console.log("forums here", forums)
-
-
-  //forum topics from most recent to least recent
-
   return (
     <div>
+
       <h1 className="forum-header">Forum</h1>
+
+      {props.user ? (
       <form onSubmit={submitData}>
         <label for="title">Title</label>
-        <input value={title} type="text" id="title" name="title" onChange={(e)=>setTitle(e.target.value)}/>
+        <input value={title} type="text" id="title" name="title" onChange={(e) => setTitle(e.target.value)} />
         <label for="content">Body</label>
-        <textarea id="content" value={body} name="body" rows="4" cols="50" onChange={(e)=>setBody(e.target.value)}></textarea>
-        <input type="submit" value="Submit"/>
-
+        <textarea id="content" value={body} name="body" rows="4" cols="50" onChange={(e) => setBody(e.target.value)}></textarea>
+        <input type="submit" value="Submit" />
       </form>
+      ) : (
+        <p>Please log in to post</p>
+      )}
+
       <div className="forum-list">
         {forums.map(forum => (
           <div key={forum.id} className="forum-list-item">
             <Link to={`/forum/${forum.id}`}>
               <h2>{forum.title}</h2>
             </Link>
-          <div className="forum-user>">
-            <a>Posted by: {forum.username}</a>
-            <br></br>
-            <a>Posted on: {forum.time_stamp}</a>
-          </div>
-            {/* <p>{forum.description}</p> */}
+            <div className="forum-user>">
+              <a>Posted by: {forum.username}</a>
+              <br></br>
+              <a>Posted on: {forum.time_stamp}</a>
+            </div>
+            {/* <button>
+              <a href="/">Back to Home</a>
+            </button> */}
           </div>
         ))}
       </div>
