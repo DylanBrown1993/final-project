@@ -6,6 +6,9 @@
   text-align: center;
   height: 700px;
   padding-top: 80px;
+  background-image: url('../../../src/images/TitleLogo.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 h2 {
