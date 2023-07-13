@@ -7,11 +7,13 @@ import '../styles/Fonts.css';
 import '../styles/Home.css';
 import '../styles/Art.css';
 import '../styles/Article.css';
+import '../styles/Review.css';
 import '../styles/Navigation.css';
-import RunGameImage from '../../../src/images/RunGame.png';
-import ColorJumpImage from '../../../src/images/ColorJump.png';
 import '../styles/MainArticles.css';
 import '../styles/MainReviews.css';
+import RunGameImage from '../../../src/images/RunGame.png';
+import ColorJumpImage from '../../../src/images/ColorJump.png';
+
 
 
 const Home = () => {
@@ -94,7 +96,6 @@ const Home = () => {
               <Link to={`/review/${review.id}`}  className='review link'>
                 <div className={`home-review-content ${index === 0 ? 'home-review-first' : ''}`}>
                   <h2 className="review-title">{review.title}</h2>
-                  <p>{review.description}</p>
                 </div>
               </Link>
             </div>

@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/MainReviews.css';
+import '../styles/Review.css';
+
 
 const MainReview = () => {
   const [reviews, setReviews] = useState([]);
@@ -19,23 +21,20 @@ const MainReview = () => {
   }, []);
 
   return (
-    <div className="main-review-route">
-      <div className="main-review-container">
-        <h1 className="main-review-title">Reviews</h1>
-        <div className="main-review-content">
-          <div className="review-grid">
-            {reviews.map(review => (
-              <div key={review.id} className="review-item">
-                <Link to={`/review/${review.id}`}>
-                  <h2>{review.title}</h2>
-                </Link>
-                <p>{review.description}</p>
-              </div>
-            ))}
-          </div>
+    <div className="reviews-container">
+    <h2>Reviews</h2>
+    <div className="home-review-grid">
+      {reviews.map((review, index) => (
+        <div key={review.id} className={`home-review-item ${index === 0 ? 'home-review-full-width' : 'home-review-grid-item'}`}>
+          <Link to={`/review/${review.id}`} className='review-link'>
+            <div className={`home-review-content ${index === 0 ? 'home-review-first' : ''}`}>
+              <h2 className="review-title">{review.title}</h2>
+            </div>
+          </Link>
         </div>
-      </div>
+      ))}
     </div>
+  </div>
   );
 };
 export default MainReview;
