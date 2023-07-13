@@ -42,7 +42,7 @@
 .id-article-body-container {
   width: 85%;
   margin: 0 auto;
-  margin-top: 14em;
+  margin-top: 34em;
   padding: 2em;
   border: 0.013em solid #3A5A40;
   background-color: #DAD7CD;
@@ -51,6 +51,28 @@
   align-items: center;
   color: black;
 }
+
+.like-button {
+  font-size: 24px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: url('../../../src/images/LilyButton.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 82px;
+}
+
+.number-likes {
+  font-size: 10px;
+}
+
 
 .id-article-likes-container {
   display: flex;
