@@ -21,24 +21,24 @@ const MainArticle = () => {
 
   return (
     <div className="main-article-route">
-      <div className="main-article-container">
-        <h1 className="main-article-title">Articles</h1>
-        <div className="main-article-content">
-          <div className="article-grid">
-            {articles.map(article => (
-              <div key={article.id} className="article-item">
-              <Link to={`/article/${article.id}`}>
-                <div className="article-container">
-                  <div className="article-image" style={{ backgroundImage: `url(${article.header_image})` }}></div>
+      <div className="main-articles-container">
+        <h2>Articles</h2>
+        <div className="main-article-grid">
+          {articles.map((article, index) => (
+            <div key={article.id} className={`main-article-item ${index === 0 ? 'main-full-width' : 'home-grid-item'}`}>
+              <Link to={`/article/${article.id}`} className='article-link'>
+                <div className={`main-article-content ${index === 0 ? 'main-article-first' : ''}`}>
+                  <div className="main-image-container">
+                    <img src={article.header_image} alt="" className="article-image" />
+                  </div>
                   <h2 className="article-title">{article.title}</h2>
                 </div>
               </Link>
-              </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 export default MainArticle;

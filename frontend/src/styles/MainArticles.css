@@ -1,5 +1,76 @@
-.main-article-route {
-  width: 85%;
-  padding-top: 200px;
-  padding: 15%;
+.main-article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
+
+.main-article-item.home-full-width {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 2;
+}
+
+
+.main-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.main-article-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #3A5A40;
+  border-radius: 5px;
+  height: 200px;
+}
+
+.main-article-first {
+  position: relative;
+  background-color: #3A5A40;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.article-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
+}
+
+.article-title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.article-link {
+  text-decoration: none;
+}
+
+.main-article-content:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transform: scale(1.02);
+}
+
+
