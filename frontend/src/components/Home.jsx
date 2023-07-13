@@ -129,6 +129,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
+      <footer className='company-footer'>® Flying Frog Games a divison of Ribbit Entertainment™  </footer>
     </div>
   );
 };
