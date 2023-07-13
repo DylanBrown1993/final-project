@@ -3,12 +3,13 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const Forum = () => {
+const Forum = (props) => {
   const [forums, setForum] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const navigate = useNavigate();
-
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = false;
   useEffect(() => {
 
     getForum();
@@ -41,15 +42,21 @@ const Forum = () => {
 
   return (
     <div>
+
       <h1 className="forum-header">Forum</h1>
+
+      {props.user ? (
       <form onSubmit={submitData}>
         <label for="title">Title</label>
         <input value={title} type="text" id="title" name="title" onChange={(e) => setTitle(e.target.value)} />
         <label for="content">Body</label>
         <textarea id="content" value={body} name="body" rows="4" cols="50" onChange={(e) => setBody(e.target.value)}></textarea>
         <input type="submit" value="Submit" />
-
       </form>
+      ) : (
+        <p>Please log in to post</p>
+      )}
+
       <div className="forum-list">
         {forums.map(forum => (
           <div key={forum.id} className="forum-list-item">
@@ -61,9 +68,9 @@ const Forum = () => {
               <br></br>
               <a>Posted on: {forum.time_stamp}</a>
             </div>
-            <button>
+            {/* <button>
               <a href="/">Back to Home</a>
-            </button>
+            </button> */}
           </div>
         ))}
       </div>
