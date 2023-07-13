@@ -63,14 +63,19 @@ const Home = () => {
 
   return (
     <div className='home-container'>
-      <div className='home-text-section'>
-        <h1 className='primary-heading'>
-          Welcome to Ribbit
-        </h1>
-        <body className='home-text'>
-          Home of the best gaming reviews and articles.
-        </body>
+      <div className='home-header-section'>
       </div>
+      <div className='home-text'>
+        Welcome to Flying Frog, the premier online destination created by gamers, 
+          for gamers. Our mission is to foster a vibrant community where gamers of 
+          all backgrounds can come together to celebrate their shared passion. With 
+          a focus on fan art, reviews, articles, games, and an engaging forum, 
+          Flying Frog provides a platform for gamers to connect, collaborate, 
+          and inspire one another. We believe in the power of gaming to unite and 
+          create meaningful experiences, and our goal is to provide a welcoming space 
+          where everyone feels valued and included. Join us on this exciting journey 
+          as we build a community that embraces the true spirit of gaming.
+        </div>
       <div className="home-articles-container">
         <h2>Articles</h2>
         <div className="home-article-grid">

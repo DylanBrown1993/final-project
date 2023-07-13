@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRef } from 'react';
 import '../styles/Navigation.css';
+import logoImage from '../../../src/images/TitleNav.png';
 import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -26,10 +27,10 @@ function Navigation(props) {
   return (
     <header>
       <Link to="/" className="logo-link">
-        <h3 className="logo">Ribbit</h3>
+        <img src={logoImage} alt="Ribbit" className="logo" />
       </Link>
       <nav className="navbar-links" ref={navRef}>
-        <NavLink exact to="/" activeClassName="active">
+        <NavLink exact to="/articles" activeClassName="active">
           Articles
         </NavLink>
         <NavLink to="/reviews" activeClassName="active">

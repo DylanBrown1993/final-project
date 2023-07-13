@@ -1,15 +1,32 @@
-.home-text-section {
+.home-header-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 700px;
-  padding-top: 220px;
+  padding-top: 200px;
   background-image: url('../../../src/images/TitleLogo.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size:30%;
 }
+
+.home-text {
+  width: 100%;
+  font-size: 30px;
+  color: white;
+  opacity: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 100px; 
+  box-sizing: border-box; 
+  padding-bottom: 120px;
+}
+
 
 h2 {
   font-size: 50px;
