@@ -272,6 +272,18 @@ app.post('/register', async (req, res) => {
   }
 });
 
+app.post('/submitart', async (req, res) => {
+  const { title, image, user_id} = req.body;
+  try {
+    await pool.query(`INSERT INTO arts (title, image, user_id) VALUES($1, $2, $3) RETURNING *`, [title, image, user_id])
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Error insert art submission in queries", error);
+    res.status(500).json({ error: 'Internal server error'});
+  };
+});
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

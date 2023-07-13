@@ -15,7 +15,7 @@ import { Register } from './components/Register';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RunGame from './components/RunGame';
 import ColorJump from './components/ColorJump';
-
+import SubmitArt from './components/SubmitArt';
 
 axios.defaults.withCredentials = true
 
@@ -59,6 +59,7 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/colorjump" element={<ColorJump />} />
           <Route path="/rungame" element={<RunGame />} />
+          <Route path="/submitart" element={<SubmitArt />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
