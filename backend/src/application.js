@@ -29,14 +29,6 @@ const corsConfig = {
 
 app.use(cors(corsConfig));
 app.options('*', cors(corsConfig))
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     console.log(origin);
-//       callback(null, origin)
-//   }, credentials: true
-// }
-// app.options('*', cors())
-// app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -203,10 +195,78 @@ app.post('/api/ratings', async (req, res) => {
     res.status(500).json({ error: 'Error updating rating'});
   }
 });
+
 app.get('/rungame', async (req, res) => {
   const { rows } = await client.query(`SELECT * FROM games`);
   res.send(rows);
 });
+
+app.get('/forums', async (req, res) => {
+  const { rows } = await pool.query(`SELECT forums.id AS id, title, body, user_id, username, time_stamp FROM forums JOIN users ON user_id = users.id`);
+  res.send(rows)
+});
+
+app.post('/forums', async (req, res) => {
+  const { title, body } = req.body;
+  const userId = req.session.user_id;
+  console.log("testing", req.session.user_id)
+
+  try {
+    const { rows } = await pool.query(`INSERT INTO forums (title, body, user_id) VALUES ($1, $2, $3) RETURNING *`, [title, body, userId]);
+    res.redirect('/forums');
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+  
+});
+
+app.get('/forums/:id', async (req, res) => {
+  const forumId = req.params.id;
+  console.log("another test", forumId);
+
+  try {
+    const { rows } = await pool.query(`SELECT * FROM forums WHERE id = $1`, [forumId]);
+    console.log("rows here", rows)
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Forum Not Found' });
+    }
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/forums/:id/comments', async (req, res) => {
+  const forumId = req.params.id;
+  const body = req.body.comment;
+  console.log("body", req.body);
+  const time_stamp = new Date();
+  const userId = req.session.user_id;
+
+  try {
+    const { rows } = await pool.query(`INSERT INTO forum_comments (body, time_stamp, forum_id, user_id) VALUES ($1, $2, $3, $4) RETURNING *`, [body, time_stamp, forumId, userId]);
+    res.send();
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+  
+});
+
+app.get('/forums/:id/comments', async (req, res) => {
+  const forumId = req.params.id;
+
+  try {
+    const { rows } = await pool.query(`SELECT username, forum_comments.* FROM forum_comments JOIN users ON user_id = users.id WHERE forum_id = $1`, [forumId]);
+    res.json(rows);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;

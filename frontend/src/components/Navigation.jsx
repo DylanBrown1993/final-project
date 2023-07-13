@@ -41,6 +41,8 @@ function Navigation(props) {
         <a href="/games">Games</a>
         &nbsp;
         <a href="/art">Art</a>
+        &nbsp;
+        <a href="/forum">Forum</a>
         <button className='nav-btn nav-close-btn' onClick={showNavBar}>
           <FaTimes/>
         </button>
