@@ -149,12 +149,6 @@ app.get('/art/:id', async (req, res) => {
   }
 });
 
-// app.get('/chat', async (req, res) => {
-//   const { rows } = await pool.query(`SELECT * FROM chats`);
-//   res.send(rows)
-// });
-
-
 app.get('/api/likes', async (req, res) => {
   try {
     const articleId = req.query.page;
@@ -245,16 +239,31 @@ app.get('/forums/:id', async (req, res) => {
 
 app.post('/forums/:id/comments', async (req, res) => {
   const forumId = req.params.id;
-  const { body } = req.body;
+  const body = req.body.comment;
+  console.log("body", req.body);
+  const time_stamp = new Date();
+  const userId = req.session.user_id;
 
   try {
-    const { rows } = await pool.query(`INSERT INTO comments (body, forum_id) VALUES ($1, $2) RETURNING *`, [body, forumId]);
-    res.redirect(`/forums/${forumId}`);
+    const { rows } = await pool.query(`INSERT INTO forum_comments (body, time_stamp, forum_id, user_id) VALUES ($1, $2, $3, $4) RETURNING *`, [body, time_stamp, forumId, userId]);
+    res.send();
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ error: 'Internal server error' });
   }
   
+});
+
+app.get('/forums/:id/comments', async (req, res) => {
+  const forumId = req.params.id;
+
+  try {
+    const { rows } = await pool.query(`SELECT username, forum_comments.* FROM forum_comments JOIN users ON user_id = users.id WHERE forum_id = $1`, [forumId]);
+    res.json(rows);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 

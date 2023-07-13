@@ -41,8 +41,7 @@ const Forum = () => {
 
   console.log("forums here", forums)
 
-  //timestamp
-  //show user who posted
+
   //forum topics from most recent to least recent
 
   return (
@@ -64,6 +63,7 @@ const Forum = () => {
             </Link>
           <div className="forum-user>">
             <a>Posted by: {forum.username}</a>
+            <br></br>
             <a>Posted on: {forum.time_stamp}</a>
           </div>
             {/* <p>{forum.description}</p> */}

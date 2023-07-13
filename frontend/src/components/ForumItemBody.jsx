@@ -29,18 +29,8 @@ const { id } = useParams();
       <p 
       className="forum-item-body" style={{marginTop:"50px"}}>{forumItem.body} 
       </p>
-      <ForumComments />
-
-    {/* <h2>Comments</h2>
-      <div className="forum-item-comments">
-        <textarea id="add-comment" name="add-comment" rows="4" cols="50">
-          Add a comment...
-        </textarea>
-        <button className="comment-submit-btn">Submit</button>
-        <p className="comment">Comment 1</p>
-        <p className="comment">Comment 2</p>
-        <p className="comment">Comment 3</p>
-      </div> */}
+      &nbsp;
+      <ForumComments id={id}/>
 
     <button>
       <a href="/forum">Back to Forum</a>
