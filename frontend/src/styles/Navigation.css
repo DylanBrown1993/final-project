@@ -19,16 +19,32 @@ header {
 }
 
 .user-text {
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 5px;
+}
+
+.nav-link {
+  background-image: url('../../../src/images/LilyButton.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 82px;
+  cursor: pointer;
 }
 
 
 .navbar-links {
   font-size: 24px;
   display: flex;
-  margin-right: 1300px; 
+  margin-right: 1100px; 
   margin-left: 20px;
 }
 
@@ -46,19 +62,31 @@ header {
 
 .login-btn,
 .register-btn {
-  background-color: white;
-  color: #3a5a40;
+  font-size: 24px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: url('../../../src/images/LilyButton.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   text-decoration: none;
   margin-right: 10px;
   cursor: pointer;
+  width: 82px;
 }
 
 .logout-btn {
-  background-color: white;
-  color: #3a5a40;
+  font-size: 24px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: url('../../../src/images/LilyButton.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: white;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
@@ -66,14 +94,16 @@ header {
   margin-right: 10px;
   cursor: pointer;
   margin-right: 50px;
+  width: 82px;
 }
+
 
 .login-btn:hover,
 .register-btn:hover,
 .logout-btn:hover {
-  background-color: #f1f1f1;
+  transform: scale(1.02);
 }
 
 body {
-  margin-top: 80px; /* Adjust this value to match the height of your navbar */
-}
+  margin-top: 80px;
+} 
