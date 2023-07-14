@@ -18,7 +18,7 @@ import ColorJump from './components/ColorJump';
 import SubmitArt from './components/SubmitArt';
 import Forum from './components/Forum';
 import ForumItemBody from './components/ForumItemBody';
-// import ForumComments from './components/ForumComments';
+import ForumComments from './components/ForumComments';
 
 axios.defaults.withCredentials = true
 
@@ -36,6 +36,7 @@ function App() {
 
   const [currentForm, setCurrentForm] = useState("login");
   const [user, setUser] = useState(null);
+  console.log("userlog", user);
 
   const toggleForm = (formName) => {
     setCurrentForm(formName);
@@ -66,6 +67,9 @@ function App() {
           <Route path="/forum/:id" exact element={<ForumItemBody />} />
           <Route path="/forum" exact element={<Forum />} />
           {/* <Route path="/forum/:id/:commentId" element={<ForumComments />} /> */}
+          <Route path="/forum/:id" exact element={<ForumItemBody user={user} setUser={setUser}/>} />
+          <Route path="/forum" exact element={<Forum user={user} setUser={setUser}/>} />
+          <Route path="/forum/:id/:commentId" element={<ForumComments user={user} setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
         </Routes>

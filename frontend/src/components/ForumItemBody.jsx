@@ -7,6 +7,7 @@ const ForumItemBody = (props) => {
 
 const [forumItem, setForumItem] = useState({});
 const { id } = useParams();
+console.log("props", props.user);
 
   useEffect(() => {
   
@@ -26,11 +27,13 @@ const { id } = useParams();
 
   return <div>
     <h1 className="forum-item-title">{forumItem.title}</h1>
+      <p> Posted by: {forumItem.username} </p>
+      <p> Posted by: {new Date (forumItem.time_stamp).toLocaleString()} </p>
       <p 
       className="forum-item-body" style={{marginTop:"50px"}}>{forumItem.body} 
       </p>
       &nbsp;
-      <ForumComments id={id}/>
+      <ForumComments id={id} user={props.user} setUser={props.setUser}/>
 
     <button>
       <a href="/forum">Back to Forum</a>
