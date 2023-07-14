@@ -22,7 +22,7 @@ Our tech stack allows us to create a seamless and interactive gaming platform. R
 ## Getting Started
 To start your gaming journey with Flying Frog, follow these steps:
 
-- Clone the repository: git clone https://github.com/flyingfrog.git
+- Clone the repository: git clone https://github.com/final-project.git
 - Install dependencies: npm install in both the frontend and backend folders.
 - Set up the PostgreSQL database.
 - Configure the database connection in the project.
