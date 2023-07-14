@@ -22,6 +22,9 @@ const MainArticle = () => {
   return (
     <div className="home-articles-container">
     <h2>Articles</h2>
+    <Link to={`/submitarticle`}>
+      <button>Submit An Article</button>
+    </Link>
     <div className="home-article-grid">
       {articles.map((article, index) => (
         <div key={article.id} className={`home-article-item ${index === 0 ? 'home-full-width' : 'home-grid-item'}`}>

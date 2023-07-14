@@ -26,7 +26,6 @@ const corsConfig = {
   origin: true,
   credentials: true,
 };
-
 app.use(cors(corsConfig));
 app.options('*', cors(corsConfig))
 app.use(express.json());
@@ -154,7 +153,12 @@ app.get('/api/likes', async (req, res) => {
   try {
     const articleId = req.query.page;
     const result = await pool.query('SELECT "count" FROM article_likes WHERE article_id = $1', [articleId]);
-    res.json({likes: result.rows[0].count});
+    if (!result.rows.length) {
+      count = 0;
+    } else {
+      count = result.rows[0].count;
+    }
+    res.json({likes: count});
   } catch (error) {
     console.error('Error retrieving likes count:', error);
     res.status(500).json({ error: 'Error retrieving likes'});
@@ -165,7 +169,12 @@ app.get('/api/ratings', async (req, res) => {
   try {
     const reviewId = req.query.page;
     const result = await pool.query('SELECT rating FROM reviews_ratings WHERE reviews_id = $1', [reviewId]);
-    res.json({rating: result.rows[0].rating});
+    if (!result.rows.length) {
+      rating = 0;
+    } else {
+      rating = result.rows[0].rating;
+    }
+    res.json({rating: rating});
   } catch (error) {
     console.error('Error retrieving rating:', error);
     res.status(500).json({ error: 'Error retrieving rating'});
@@ -176,6 +185,7 @@ app.post('/api/likes', async (req, res) => {
   try {
     const articleId = req.query.page;
     const updatedCount = req.body.count;
+    console.log("updated:", updatedCount);
     await pool.query('UPDATE article_likes SET count = $1 WHERE article_id = $2', [updatedCount, articleId]);
     res.sendStatus(200);
   } catch (error) {
@@ -333,12 +343,44 @@ app.post('/register', async (req, res) => {
 });
 
 app.post('/submitart', async (req, res) => {
-  const { title, image, user_id} = req.body;
+  const { title, image} = req.body;
+  const userId = req.session.user_id;
   try {
-    await pool.query(`INSERT INTO arts (title, image, user_id) VALUES($1, $2, $3) RETURNING *`, [title, image, user_id])
-    res.sendStatus(200);
+    await pool.query(`INSERT INTO arts (title, image, user_id) VALUES($1, $2, $3) RETURNING *`, [title, image, userId])
+    await pool.query(`SELECT username FROM users WHERE id = $1`, [userId]);
+    res.status(200).json({success: 'Art successfully added'});
   } catch (error) {
     console.error("Error insert art submission in queries", error);
+    res.status(500).json({ error: 'Internal server error'});
+  };
+});
+
+app.post('/submitarticle', async (req, res) => {
+  const { title, header_image, description, body } = req.body;
+  const userId = req.session.user_id;
+  const createArticleId = Math.floor(Math.random()*100);
+  try {
+    await pool.query(`INSERT INTO articles (title, header_image, description, body, user_id, id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`, [title, header_image, description, body, userId, createArticleId])
+    await pool.query(`INSERT INTO article_likes (count, article_id, user_id) VALUES ($1, $2, $3)`, [0, createArticleId, userId])
+    await pool.query(`SELECT username FROM users WHERE id = $1`, [userId]);
+    res.status(200).json({success: 'Article successfully added'});
+  } catch (error) {
+    console.error("Error insert article submission in queries", error);
+    res.status(500).json({ error: 'Internal server error'});
+  };
+});
+
+app.post('/submitreview', async (req, res) => {
+  const { title, description, body} = req.body;
+  const userId = req.session.user_id;
+  const createReviewId = Math.floor(Math.random()*100);
+  try {
+    await pool.query(`INSERT INTO reviews (title, description, body, user_id, id) VALUES($1, $2, $3, $4, $5) RETURNING *`, [title, description, body, userId, createReviewId])
+    await pool.query(`INSERT INTO reviews_ratings (rating, reviews_id, user_id) VALUES ($1, $2, $3)`, [0, createReviewId, userId])
+    await pool.query(`SELECT username FROM users WHERE id = $1`, [userId]);
+    res.status(200).json({success: 'Review successfully added'});
+  } catch (error) {
+    console.error("Error insert review submission in queries", error);
     res.status(500).json({ error: 'Internal server error'});
   };
 });

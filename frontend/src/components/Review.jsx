@@ -29,7 +29,7 @@ const Review = () => {
 
   return (
     (loading) ? (
-      <div>Article Loading...</div>
+      <div>Review Loading...</div>
     ) : (
       (review) ? (
     <div className="review-route">

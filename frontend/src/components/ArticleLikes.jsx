@@ -7,6 +7,7 @@ const LikeButton = ({articleId}) => {
   const fetchLikesCount = async () => {
     try {
       const response = await axios.get(`http://localhost:3001/api/likes?page=${articleId}`)
+      console.log("res: ", response)
       setLikes(response.data.likes);
     } catch (error) {
       console.error ('Error fetching likes count:', error)

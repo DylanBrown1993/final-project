@@ -23,6 +23,9 @@ const MainReview = () => {
   return (
     <div className="reviews-container">
     <h2>Reviews</h2>
+    <Link to={`/submitreview`}>
+      <button>Submit A Review</button>
+    </Link>
     <div className="home-review-grid">
       {reviews.map((review, index) => (
         <div key={review.id} className={`home-review-item ${index === 0 ? 'home-review-full-width' : 'home-review-grid-item'}`}>
