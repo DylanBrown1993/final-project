@@ -35,6 +35,7 @@ function App() {
 
   const [currentForm, setCurrentForm] = useState("login");
   const [user, setUser] = useState(null);
+  console.log("userlog", user);
 
   const toggleForm = (formName) => {
     setCurrentForm(formName);
@@ -61,7 +62,7 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/colorjump" element={<ColorJump />} />
           <Route path="/rungame" element={<RunGame />} />
-          <Route path="/forum/:id" exact element={<ForumItemBody />} />
+          <Route path="/forum/:id" exact element={<ForumItemBody user={user} setUser={setUser}/>} />
           <Route path="/forum" exact element={<Forum user={user} setUser={setUser}/>} />
           <Route path="/forum/:id/:commentId" element={<ForumComments user={user} setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />

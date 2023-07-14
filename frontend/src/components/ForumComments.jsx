@@ -10,6 +10,7 @@ const ForumComments = (props) => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
+  console.log("userforum", props)
 
   useEffect(() => {
     axios.get(`http://localhost:3001/forums/${props.id}/comments/`)
@@ -26,7 +27,7 @@ const ForumComments = (props) => {
   const updateComment = (e) => {
     e.preventDefault();
 
-    console.log("commments", comments);
+    console.log("commments here", comments);
 
     axios.post(`http://localhost:3001/forums/${props.id}/comments/`, {
       comment
@@ -47,10 +48,12 @@ const ForumComments = (props) => {
   };
 
   console.log("comments", comments);
-
+  console.log("user", props.user)
+  
   return <div>
 
     <h4>Comments</h4>
+    
     {props.user ? (
       <div className="forum-item-comments">
         <input
@@ -66,8 +69,11 @@ const ForumComments = (props) => {
       </div>
 
     ) : (
-      <p>Please log in to comment</p>
+      
+      <p>Please log in to comment </p>
     )}
+    
+    
     &nbsp;
     
     <div className="forum-each-comment">
