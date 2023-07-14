@@ -4,7 +4,7 @@ import axios from 'axios';
 const Rating = ({reviewId}) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-
+  const [prevRating, setPrevRating] = useState(0);
 
 
   const fetchRating = async () => {
@@ -39,6 +39,11 @@ const Rating = ({reviewId}) => {
     setHoverRating(hoveredRating);
   };
 
+  const handleMouseLeave = () => {
+    setHoverRating(0);
+    setPrevRating(rating);
+  };
+
   const renderStars = () => {
     const stars = [];
     
@@ -47,10 +52,12 @@ const Rating = ({reviewId}) => {
         <span 
           key={i}
           className={`star ${i <= (hoverRating || rating) ? 'active' : ''}`}
-          onMouseLeave={handleHover}
+          onMouseEnter={() => handleHover(i)}
+          onMouseLeave = {handleMouseLeave}
           onClick={() => handleRating(i)}
         >
-          {i <= (hoverRating || rating) ? '🌟' : '⭐'}        </span>
+          {i <= (hoverRating || rating) ? '🌟' : '⭐'}        
+        </span>
       );
     }
     return stars;

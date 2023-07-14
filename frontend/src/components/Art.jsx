@@ -22,6 +22,9 @@ const MainArt = () => {
     <div className="main-art-route">
       <div className="main-art-container">
         <h1 className="main-art-title">Art</h1>
+        <Link to={`/submitart`}>
+          <button>Submit An Art Piece</button>
+        </Link>
         <div className="main-art-content">
           <div className="art-grid">
             {art.map(art => (

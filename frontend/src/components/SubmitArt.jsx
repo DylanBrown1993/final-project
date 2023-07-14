@@ -1,86 +1,85 @@
 import React, { useState } from "react";
-// import '../styles/SubmitArt.css';
-import axios from 'axios';
+import {useNavigate} from "react-router-dom";
+import "../styles/SubmitArt.css";
+import axios from "axios";
 
-const SubmitArt = () => {
-  const [title, setTitle] = useState('');
-  const [image, setImage] = useState(null);
-  const [userId, setUserId] = useState('');
-
-  const handleImageSelect = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-  };
+const SubmitArt = (props) => {
+  const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('image', image);
-      formData.append('user_id', userId);
-
-      await axios.post('http://localhost:3001/submitart', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+      await axios.post("http://localhost:3001/submitart", {
+        title,
+        image,
       });
-      console.log('Art submitted successfully');
+      navigate("/art");
     } catch (error) {
-      console.error('Error submitting art', error);
-    } 
+      console.error("Error submitting art", error);
+    }
   };
 
   return (
-    <form method="POST" action="/submitart" encType="multipart/form-data" onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
-      </label>
-      <label>
-        Image:
-        <input type="file" onChange={handleImageSelect}/>
-      </label>
-      <label>
-        Username:
-        <input type="text" value={userId} onChange={(e) => setUserId(e.target.value)}/>
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+      <h1>Submit An Art Piece</h1>
+      {!props.user ? (
+        <form method="POST" action="/submitart" onSubmit={handleSubmit}>
+          <label>
+            Title:
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
+          <label>
+            Image:
+            <input
+              type="url"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+      ) : (
+        <p>Please log in to submit an art piece</p>
+      )}
+    </div>
   );
 };
 
 export default SubmitArt;
 
 //////////
-  // state = {
-  //   selectedFill: null
-  // };
+// state = {
+//   selectedFill: null
+// };
 
-  // onFileChange = event => {
-  //   this.setState({
-  //     selectedFile: event.target.files[0]
-  //   });
-  // };
+// onFileChange = event => {
+//   this.setState({
+//     selectedFile: event.target.files[0]
+//   });
+// };
 
-  // onFileUpload = () => {
-  //   const formDate = new FormData();
+// onFileUpload = () => {
+//   const formDate = new FormData();
 
-  //   FormData.append(
-  //     "myFile",
-  //     this.state.selectedFile,
-  //   )
-  // }
+//   FormData.append(
+//     "myFile",
+//     this.state.selectedFile,
+//   )
+// }
 
 ////////
-
 
 //   const [username, setUsername] = useState("");
 //   const [password, setPassword] = useState("");
 
 //   const navigate = useNavigate();
-  
 
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
@@ -95,7 +94,7 @@ export default SubmitArt;
 //     })
 //     .catch(function (error) {
 //       console.log(error);
-//     }); 
+//     });
 //   }
 
 //   return (

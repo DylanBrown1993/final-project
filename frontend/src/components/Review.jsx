@@ -37,6 +37,7 @@ const Review = () => {
   }
 
   return (
+<<<<<<< HEAD
     <div className="id-review-route">
       <div className="id-review-container">
         <div className="id-review-image-container">
@@ -53,6 +54,22 @@ const Review = () => {
             <p className="id-review-body">{review.body}</p>
             <p>{formatDate(review.time_stamp)}</p>
           </div>
+=======
+    (loading) ? (
+      <div>Review Loading...</div>
+    ) : (
+      (review) ? (
+    <div className="review-route">
+      <div className="review-container">
+        <h1>Review</h1>
+        <div className="review-info">
+          <h1>{review.title}</h1>
+          <p>{review.username}</p>
+          <ReviewRatings reviewId={id}/>
+          <p>{review.description}</p>
+          <p>{review.body}</p>
+          <p>{formatDate(review.time_stamp)}</p>
+>>>>>>> feature/submission
         </div>
       </div>
     </div>
