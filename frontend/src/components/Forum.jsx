@@ -8,12 +8,14 @@ const Forum = (props) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const navigate = useNavigate();
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isLoggedIn = false;
+
+  console.log("userforum", props.user)
   useEffect(() => {
 
     getForum();
   }, []);
+
+
 
   const getForum = async () => {
     try {
@@ -40,19 +42,21 @@ const Forum = (props) => {
 
   };
 
+
+
   return (
     <div>
 
       <h1 className="forum-header">Forum</h1>
 
       {props.user ? (
-      <form onSubmit={submitData}>
-        <label for="title">Title</label>
-        <input value={title} type="text" id="title" name="title" onChange={(e) => setTitle(e.target.value)} />
-        <label for="content">Body</label>
-        <textarea id="content" value={body} name="body" rows="4" cols="50" onChange={(e) => setBody(e.target.value)}></textarea>
-        <input type="submit" value="Submit" />
-      </form>
+        <form onSubmit={submitData}>
+          <label for="title">Title</label>
+          <input value={title} type="text" id="title" name="title" onChange={(e) => setTitle(e.target.value)} />
+          <label for="content">Body</label>
+          <textarea id="content" value={body} name="body" rows="4" cols="50" onChange={(e) => setBody(e.target.value)}></textarea>
+          <input type="submit" value="Submit" />
+        </form>
       ) : (
         <p>Please log in to post</p>
       )}
@@ -66,14 +70,14 @@ const Forum = (props) => {
             <div className="forum-user>">
               <a>Posted by: {forum.username}</a>
               <br></br>
-              <a>Posted on: {forum.time_stamp}</a>
+              <a>Posted on: {new Date(forum.time_stamp).toLocaleString()}</a>
             </div>
-            {/* <button>
-              <a href="/">Back to Home</a>
-            </button> */}
           </div>
         ))}
       </div>
+      <button>
+        <a href="/">Back to Home</a>
+      </button>
     </div>
   );
 };
