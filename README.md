@@ -4,11 +4,11 @@ Welcome to Flying Frog, a haven for gamers where you can dive into a world of ga
 
 ## Features
 
-# Articles: Explore a wide range of gaming articles written by fellow gamers. Stay up-to-date with the latest gaming news, tips, and insights.
-# Game Reviews: Read and share game reviews to help the community make informed decisions about their next gaming adventures.
-# Forums: Engage in lively discussions with fellow gamers on our forums. Share your thoughts, ask questions, and be a part of the gaming community.
-# Fan Art: Show off your creative side by sharing your gaming-related artwork and fan creations with the community.
-# Games: Discover and play exciting games right on our platform. Experience new adventures and challenges with a collection of carefully selected games.
+- Articles: Explore a wide range of gaming articles written by fellow gamers. Stay up-to-date with the latest gaming news, tips, and insights.
+- Game Reviews: Read and share game reviews to help the community make informed decisions about their next gaming adventures.
+- Forums: Engage in lively discussions with fellow gamers on our forums. Share your thoughts, ask questions, and be a part of the gaming community.
+- Fan Art: Show off your creative side by sharing your gaming-related artwork and fan creations with the community.
+- Games: Discover and play exciting games right on our platform. Experience new adventures and challenges with a collection of carefully selected games.
 
 ## Community-driven
 At Flying Frog, we believe in the power of community. We foster a welcoming and inclusive environment for gamers of all backgrounds. Connect with like-minded individuals, share your passion for gaming, and make new friends along the way. Together, we can leap into new gaming horizons!
@@ -22,12 +22,12 @@ Our tech stack allows us to create a seamless and interactive gaming platform. R
 ## Getting Started
 To start your gaming journey with Flying Frog, follow these steps:
 
-# Clone the repository: git clone https://github.com/flyingfrog.git
-# Install dependencies: npm install in both the frontend and backend folders.
-# Set up the PostgreSQL database.
-# Configure the database connection in the project.
-# Run the server: npm start for the front end, and npm run server for the backend.
-# Visit http://localhost:3000 in your browser.
+- Clone the repository: git clone https://github.com/flyingfrog.git
+- Install dependencies: npm install in both the frontend and backend folders.
+- Set up the PostgreSQL database.
+- Configure the database connection in the project.
+- Run the server: npm start for the front end, and npm run server for the backend.
+- Visit http://localhost:3000 in your browser.
 
 Explore articles, reviews, forums, fan art, and games.
 Engage with the community, share your thoughts, and enjoy the gaming experience.
