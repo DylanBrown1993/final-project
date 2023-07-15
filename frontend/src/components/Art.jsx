@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -27,12 +27,14 @@ const MainArt = (props) => {
           <button>Submit An Art Piece</button>
         </Link>
         <div className="main-art-content">
+          <button>
+          </button>
           <div className="art-grid">
             {art.map(art => (
               <div key={art.id} className="art-item">
                 <Link to={`/art/${art.id}`}>
                   <div className="main-art-background">
-                  <img src={art.image} className="art-image" alt="Art Image" />
+                    <img src={art.image} className="art-image" alt="Art Image" />
                   </div>
                 </Link>
               </div>

@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/application.js",
     "server": "nodemon src/application.js"
-    
   },
   "keywords": [],
   "author": "",
@@ -18,6 +17,8 @@
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "multer": "^1.4.5-lts.1",
     "pg": "^8.11.1"
   },
   "devDependencies": {

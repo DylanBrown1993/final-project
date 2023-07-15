@@ -3,6 +3,10 @@ const { Pool } = require("pg");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bcrypt = require("bcrypt");
+// const fileUpload = require("express-fileupload");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+
 const app = express()
 const port = 3001
 // const db = require("./db")
@@ -30,7 +34,9 @@ app.use(cors(corsConfig));
 app.options('*', cors(corsConfig))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
+// app.use(fileUpload({
+//   limits: { fileSize: 50 * 1024 * 1024 },
+// }));
 
 const userAuth = (req, res, next) => {
 
