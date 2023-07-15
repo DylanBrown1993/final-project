@@ -21,7 +21,7 @@ import ForumItemBody from './components/ForumItemBody';
 import ForumComments from './components/ForumComments';
 import SubmitArticle from './components/SubmitArticle';
 import SubmitReview from './components/SubmitReview';
-// import ForumComments from './components/ForumComments';
+import ArtLikes from './components/ArtLikes';
 
 axios.defaults.withCredentials = true
 
@@ -60,8 +60,8 @@ function App() {
           <Route path="/review/:id" element={<Review />} />
           <Route path="/articles" element={<MainArticles />} />
           <Route path="/article/:id" element={<Article />} />
-          <Route path="/art" element={<MainArt />} />
-          <Route path="/art/:id" element={<ArtImage />} />
+          <Route path="/art" element={<MainArt user={user} setUser={setUser}/>} />
+          <Route path="/art/:id" element={<ArtImage user={user} setUser={setUser}/>} />
           <Route path="/reviews" element={<Review />} />
           <Route path="/games" element={<Games />} />
           <Route path="/colorjump" element={<ColorJump />} />
@@ -77,6 +77,7 @@ function App() {
           <Route path="/forum/:id/:commentId" element={<ForumComments user={user} setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/artlikes" element={<ArtLikes user={user} setUser={setUser}/>} />
         </Routes>
       </Router>
     </div>
