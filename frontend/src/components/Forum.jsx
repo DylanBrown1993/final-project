@@ -9,7 +9,7 @@ const Forum = (props) => {
   const [body, setBody] = useState("");
   const navigate = useNavigate();
 
-  console.log("userforum", props.user)
+
   useEffect(() => {
 
     getForum();

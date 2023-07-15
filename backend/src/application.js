@@ -211,6 +211,37 @@ app.get('/rungame', async (req, res) => {
   res.send(rows);
 });
 
+app.get('/api/artLikes', async (req, res) => {
+  try {
+    const artId = req.query.page;
+    const result = await pool.query('SELECT "count" FROM arts_likes WHERE art_id = $1', [artId]);
+    res.json({likes: result.rows[0].count});
+  } catch (error) {
+    console.error('Error retrieving likes count:', error);
+    res.status(500).json({ error: 'Error retrieving likes'});
+  }
+});
+
+app.post('/api/artLikes', async (req, res) => {
+  try {
+    const artId = req.query.page;
+   
+    const updatedCount = req.body.count;
+   
+    const result = await pool.query('SELECT "count" FROM arts_likes WHERE art_id = $1', [artId]);
+
+    if(!result.rows[0]) {
+      await pool.query('INSERT INTO arts_likes (liked, count, art_id, user_id ) VALUES ($1, $2, $3, $4)', ["true", updatedCount, artId, req.session.user_id]);
+      return res.sendStatus(200);
+    };
+    await pool.query('UPDATE arts_likes SET count = $1 WHERE art_id = $2 and user_id = $3', [updatedCount, artId, req.session.user_id]);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error('Error updating likes count:', error);
+    res.status(500).json({ error: 'Error updating likes'});
+  }
+});
+
 app.get('/forums', async (req, res) => {
   const { rows } = await pool.query(`SELECT forums.id AS id, title, body, user_id, username, time_stamp FROM forums JOIN users ON user_id = users.id ORDER BY time_stamp DESC`);
   res.send(rows)

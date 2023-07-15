@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import ArtLikes from './ArtLikes';
 
 
-const Art = () => {
+const Art = (props) => {
   const [art, setArt] = useState(null);
   const { id } = useParams();
 
@@ -39,6 +40,7 @@ const Art = () => {
           <div className="art-background">
             <img src={art.image}/>
           </div>
+          <ArtLikes artId={art.id} user={props.user} setUser={props.setUser}/>
         </div>
       </div>
     </div>

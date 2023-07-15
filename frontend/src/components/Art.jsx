@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-const MainArt = () => {
+
+const MainArt = (props) => {
   const [art, setArt] = useState([]);
 
   useEffect(() => {
