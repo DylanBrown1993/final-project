@@ -22,6 +22,7 @@ const ArtLikes = ({ artId, user }) => {
   const incrementLikes = async () => {
     try {
       const updatedCount = likes + 1;
+      console.log("UPDATE ACCOUNT:", updatedCount, artId);
       await axios.post(`http://localhost:3001/api/artLikes?page=${artId}`, { count: updatedCount });
       setLikes(updatedCount);
     } catch (error) {

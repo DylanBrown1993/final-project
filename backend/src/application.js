@@ -103,7 +103,8 @@ app.get('/art/:id', async (req, res) => {
   const artId = req.params.id;
 
   try {
-    const { rows } = await pool.query(`SELECT * FROM arts, users WHERE arts.id = $1 AND arts.user_id = users.id`, [artId]);
+    const { rows } = await pool.query(`SELECT arts.id AS id, arts.title, arts.image, arts.time_stamp, arts.user_id, users.name, users.username, users.email FROM arts LEFT JOIN users ON arts.user_id = users.id WHERE arts.id = $1`, [artId])
+    // const { rows } = await pool.query(`SELECT * FROM arts, users WHERE arts.id = $1 AND arts.user_id = users.id`, [artId]);
     
     if (rows.length === 0) {
       return res.status(404).json({ error: 'Art Not Found' });
@@ -221,7 +222,12 @@ app.get('/api/artLikes', async (req, res) => {
   try {
     const artId = req.query.page;
     const result = await pool.query('SELECT "count" FROM arts_likes WHERE art_id = $1', [artId]);
-    res.json({likes: result.rows[0].count});
+    if (!result.rows.length) {
+      count = 0;
+    } else {
+      count = result.rows[0].count;
+    }
+    res.json({likes: count});
   } catch (error) {
     console.error('Error retrieving likes count:', error);
     res.status(500).json({ error: 'Error retrieving likes'});
@@ -231,16 +237,8 @@ app.get('/api/artLikes', async (req, res) => {
 app.post('/api/artLikes', async (req, res) => {
   try {
     const artId = req.query.page;
-   
     const updatedCount = req.body.count;
-   
-    const result = await pool.query('SELECT "count" FROM arts_likes WHERE art_id = $1', [artId]);
-
-    if(!result.rows[0]) {
-      await pool.query('INSERT INTO arts_likes (liked, count, art_id, user_id ) VALUES ($1, $2, $3, $4)', ["true", updatedCount, artId, req.session.user_id]);
-      return res.sendStatus(200);
-    };
-    await pool.query('UPDATE arts_likes SET count = $1 WHERE art_id = $2 and user_id = $3', [updatedCount, artId, req.session.user_id]);
+    await pool.query('UPDATE arts_likes SET count = $1 WHERE art_id = $2', [updatedCount, artId]);
     res.sendStatus(200);
   } catch (error) {
     console.error('Error updating likes count:', error);
@@ -382,8 +380,10 @@ app.post('/register', async (req, res) => {
 app.post('/submitart', async (req, res) => {
   const { title, image} = req.body;
   const userId = req.session.user_id;
+  const createArtId = Math.floor(Math.random()*100);
   try {
-    await pool.query(`INSERT INTO arts (title, image, user_id) VALUES($1, $2, $3) RETURNING *`, [title, image, userId])
+    await pool.query(`INSERT INTO arts (title, image, user_id, id) VALUES($1, $2, $3, $4) RETURNING *`, [title, image, userId, createArtId])
+    await pool.query(`INSERT INTO arts_likes (count, art_id, user_id) VALUES ($1, $2, $3)`, [0, createArtId, userId])
     await pool.query(`SELECT username FROM users WHERE id = $1`, [userId]);
     res.status(200).json({success: 'Art successfully added'});
   } catch (error) {
@@ -410,10 +410,9 @@ app.post('/submitarticle', async (req, res) => {
 app.post('/submitreview', async (req, res) => {
   const { title, description, body} = req.body;
   const userId = req.session.user_id;
-  const createReviewId = Math.floor(Math.random()*100);
   try {
-    await pool.query(`INSERT INTO reviews (title, description, body, user_id, id) VALUES($1, $2, $3, $4, $5) RETURNING *`, [title, description, body, userId, createReviewId])
-    await pool.query(`INSERT INTO reviews_ratings (rating, reviews_id, user_id) VALUES ($1, $2, $3)`, [0, createReviewId, userId])
+    const reviewInsert = await pool.query(`INSERT INTO reviews (title, description, body, user_id) VALUES($1, $2, $3, $4) RETURNING id`, [title, description, body, userId])
+    await pool.query(`INSERT INTO reviews_ratings (rating, reviews_id, user_id) VALUES ($1, $2, $3)`, [0, reviewInsert.rows[0].id, userId])
     await pool.query(`SELECT username FROM users WHERE id = $1`, [userId]);
     res.status(200).json({success: 'Review successfully added'});
   } catch (error) {
