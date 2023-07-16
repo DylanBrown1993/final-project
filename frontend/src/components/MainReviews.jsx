@@ -22,9 +22,9 @@ const MainReview = () => {
 
   return (
     <div className="reviews-container">
-    <h2>Reviews</h2>
+    <h2 className="main-reviews-title">Reviews</h2>
     <Link to={`/submitreview`}>
-      <button>Submit A Review</button>
+      <button className="main-reviews-submit">Submit A Review</button>
     </Link>
     <div className="home-review-grid">
       {reviews.map((review, index) => (

@@ -26,7 +26,7 @@ function Navigation(props) {
   };
 
   return (
-    <header>
+    <header className="nav-header">
       <Link to="/" className="logo-link">
         <img src={logoImage} alt="Ribbit" className="logo" />
       </Link>
@@ -47,6 +47,9 @@ function Navigation(props) {
       </NavLink>
       <NavLink to="/art" activeClassName="active" className="nav-link-4">
         Art
+      </NavLink>
+      <NavLink to="/forum" activeClassName="active" className="nav-link-5">
+        Forum
       </NavLink>
     </nav>
 

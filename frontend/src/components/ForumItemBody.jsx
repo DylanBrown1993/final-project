@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ForumComments from './ForumComments';
+import '../styles/ForumItemBody.css';
 
 const ForumItemBody = (props) => {
 
@@ -27,16 +28,16 @@ console.log("props", props.user);
 
   return <div>
     <h1 className="forum-item-title">{forumItem.title}</h1>
-      <p> Posted by: {forumItem.username} </p>
-      <p> Posted by: {new Date (forumItem.time_stamp).toLocaleString()} </p>
+      <p className="forum-username"> Posted by: {forumItem.username} </p>
+      <p className="forum-time"> Posted on: {new Date (forumItem.time_stamp).toLocaleString()} </p>
       <p 
       className="forum-item-body" style={{marginTop:"50px"}}>{forumItem.body} 
       </p>
       &nbsp;
       <ForumComments id={id} user={props.user} setUser={props.setUser}/>
 
-    <button>
-      <a href="/forum">Back to Forum</a>
+    <button className="submit">
+      <a href="/forum" className="back-forum-link">Back to Forum</a>
     </button>
     </div>;
 };

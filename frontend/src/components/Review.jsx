@@ -51,7 +51,7 @@ const Review = () => {
             <ReviewRatings reviewId={id} />
             <p className="id-review-description">{review.description}</p>
             <p className="id-review-body">{review.body}</p>
-            <p>{formatDate(review.time_stamp)}</p>
+            <p className="id-review-time">{formatDate(review.time_stamp)}</p>
           </div>
         </div>
       </div>

@@ -65,8 +65,8 @@ const Rating = ({reviewId}) => {
 
   return (
     <div>
-      <div className="rating">{renderStars()}</div>
-      <p>{rating} out of 5 stars </p>
+      <div className="id-rating">{renderStars()}</div>
+      <p className="id-review-ratings" >{rating} out of 5 stars </p>
     </div>
   );
 };

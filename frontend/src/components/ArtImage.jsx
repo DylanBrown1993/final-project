@@ -33,11 +33,10 @@ const Art = (props) => {
   return (
     <div className="art-route">
       <div className="art-container">
-        <h1>Art</h1>
         <div className="art-info">
-          <p>{formatDate(art.time_stamp)}</p>
-          <h1>{art.title}</h1>
-          <p>{art.username}</p>
+          <h1 className="art-title">{art.title}</h1>
+          <p className="art-username">{art.username}</p>
+          <p className="art-time">{formatDate(art.time_stamp)}</p>
           <div className="art-background">
             <img src={art.image}/>
           </div>

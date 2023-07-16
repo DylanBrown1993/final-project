@@ -52,7 +52,7 @@ const ForumComments = (props) => {
   
   return <div>
 
-    <h4>Comments</h4>
+    <h4 className="forum-comments-title">Comments</h4>
     
     {props.user ? (
       <div className="forum-item-comments">
@@ -61,16 +61,16 @@ const ForumComments = (props) => {
           onChange={(e) => setComment(e.target.value)}
           placeholder="What are your thoughts?" id="add-comment" name="add-comment" size={75}
         />
-    <form>
+    <form className="forum-form">
       <div className="forum-item-comments">
-        <button onClick={updateComment} type="submit" value="Submit">Comment</button>
+        <button onClick={updateComment} type="submit" value="Submit" className="Submit">Comment</button>
       </div>
     </form>
       </div>
 
     ) : (
       
-      <p>Please log in to comment </p>
+      <p className="forum-login">Please log in to comment </p>
     )}
     
     

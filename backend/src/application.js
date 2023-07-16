@@ -4,8 +4,8 @@ const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bcrypt = require("bcrypt");
 // const fileUpload = require("express-fileupload");
-const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+// const multer = require("multer");
+// const upload = multer({ dest: "uploads/" });
 
 const app = express()
 const port = 3001
@@ -83,7 +83,7 @@ app.get('/review/:id', async (req, res) => {
   const reviewId = req.params.id;
 
   try {
-    const { rows } = await pool.query(`SELECT * FROM reviews, users WHERE reviews.id = $1 AND reviews.user_id = users.id`, [reviewId]); 
+    const { rows } = await pool.query(`SELECT * FROM reviews, users WHERE reviews.id = $1`, [reviewId]); 
     if (rows.length === 0) {
       return res.status(404).json({error: 'Review Not Found'});
     }
@@ -123,9 +123,9 @@ app.get('/articles', async (req, res) => {
 
 app.get('/article/:id', async (req, res) => {
   const articleId = req.params.id;
-
+  console.log(articleId);
   try {
-    const { rows } = await pool.query(`SELECT * FROM articles, users WHERE articles.id = $1 AND articles.user_id = users.id`, [articleId]); 
+    const { rows } = await pool.query(`SELECT * FROM articles, users WHERE articles.id = $1`, [articleId]); 
     if (rows.length === 0) {
       return res.status(404).json({error: 'Article Not Found'});
     }

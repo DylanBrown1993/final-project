@@ -24,25 +24,25 @@ const SubmitArt = (props) => {
 
   return (
     <div>
-      <h1>Submit An Art Piece</h1>
+      <h1 className="submit-art-title">Submit An Art Piece</h1>
       {!props.user ? (
         <form method="POST" action="/submitart" onSubmit={handleSubmit}>
           <label>
             Title:
+          </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-          </label>
           <label>
-            Image:
+            Image URL:
+          </label>
             <input
               type="url"
               value={image}
               onChange={(e) => setImage(e.target.value)}
             />
-          </label>
           <button type="submit">Submit</button>
         </form>
       ) : (

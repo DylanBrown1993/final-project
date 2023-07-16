@@ -1,3 +1,14 @@
+.main-art-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  height: 200px;
+  margin-bottom: 0;
+  align-items: center;
+  font-size: 3.125em;
+  font-family: 'Acme', sans-serif;
+}
+
 .art-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -14,12 +25,72 @@
   object-fit: cover;
   display: block;
   transition: filter 0.3s ease-in-out;
-  border-radius: 5px;
+  border-radius: 15px;
   margin: 0.625em;
-  border: 0.013em solid #3A5A40;
+  border: .15em solid #588157;
 }
 
 .art-image:hover {
   box-shadow: 0 0 0.313em rgba(0, 0, 0, 0.5);
   transform: scale(1.02);
+}
+.main-art-submit {
+  background-color: #3A5A40;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  color:white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 27px;
+  margin-bottom: 20px;
+  font-family: 'Acme', sans-serif;
+}
+
+.main-art-submit:hover {
+  transform: scale(1.02);
+}
+
+.art-title {
+  color: white;
+  font-size: 3.75em;
+  margin-top: 2.5em;
+  font-family: 'Acme', sans-serif;
+  margin-bottom: 0;
+}
+
+.art-username {
+  color: white;
+  font-size: 1.625em;
+  margin-top: 0.625em;
+}
+
+.art-time {
+  font-size: 1em;
+}
+
+.like-button {
+  font-size: 24px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: url('../../../src/images/LilyButton.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 82px;
+  font-family: 'Acme', sans-serif;
+}
+
+.number-likes {
+  font-size: 30px;
+  font-family: 'Acme', sans-serif;
+  margin-top: 0;
 }

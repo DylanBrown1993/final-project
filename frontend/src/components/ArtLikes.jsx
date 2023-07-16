@@ -36,10 +36,8 @@ const ArtLikes = ({ artId, user }) => {
 
   return (
     <div>
-      {user && <div >
       <button className="like-button" onClick={handleLike}>Like</button>
       <p className='number-likes'>{likes} {likes === 1 ? 'person likes' : 'people like'} this</p>
-      </div>}
     </div>
   );
 };

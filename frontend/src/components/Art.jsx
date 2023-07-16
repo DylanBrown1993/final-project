@@ -24,11 +24,9 @@ const MainArt = (props) => {
       <div className="main-art-container">
         <h1 className="main-art-title">Art</h1>
         <Link to={`/submitart`}>
-          <button>Submit An Art Piece</button>
+          <button className="main-art-submit">Submit An Art Piece</button>
         </Link>
         <div className="main-art-content">
-          <button>
-          </button>
           <div className="art-grid">
             {art.map(art => (
               <div key={art.id} className="art-item">

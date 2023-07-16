@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import '../styles/Forum.css';
 
 
 const Forum = (props) => {
@@ -51,14 +52,14 @@ const Forum = (props) => {
 
       {props.user ? (
         <form onSubmit={submitData}>
-          <label for="title">Title</label>
+          <label for="title">Title:</label>
           <input value={title} type="text" id="title" name="title" onChange={(e) => setTitle(e.target.value)} />
-          <label for="content">Body</label>
+          <label for="content">Body:</label>
           <textarea id="content" value={body} name="body" rows="4" cols="50" onChange={(e) => setBody(e.target.value)}></textarea>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="forum-submit-btn"/>
         </form>
       ) : (
-        <p>Please log in to post</p>
+        <p className="forum-login">Please log in to post</p>
       )}
 
       <div className="forum-list">

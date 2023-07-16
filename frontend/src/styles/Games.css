@@ -3,9 +3,13 @@
 }
 
 h1.games-header {
-  font-family: 'Acme';
   display: flex;
   justify-content: center;
+  height: 200px;
+  margin-bottom: 0;
+  align-items: center;
+  font-size: 3.125em;
+  font-family: 'Acme', sans-serif;
 }
 
 .games-list-container {
@@ -13,6 +17,8 @@ h1.games-header {
   justify-content: center;
   align-items: center;
   gap: 1.25em;
+  background-color: #3A5A40;
+  padding: 15px;
 }
 
 .games-list-container img {
@@ -20,7 +26,7 @@ h1.games-header {
   max-height: 18.75em;
   border-radius: 5px;
   margin: 0.625em;
-  border: 0.013em solid #3A5A40;
+  border: 0.15em solid #588157;
 }
 
 .games-list-container img:hover {
