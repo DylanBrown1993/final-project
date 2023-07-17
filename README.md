@@ -2,13 +2,31 @@
 # Flying Frog
 Welcome to Flying Frog, a haven for gamers where you can dive into a world of gaming articles, game reviews, forum discussions, fan art, and exciting games. Our project is all about building a vibrant community for gamers, by gamers. We welcome you to hop in, and experience an immersive gaming experience!
 
+
+![image](https://github.com/DylanBrown1993/final-project/assets/128406806/d1087e6c-7f6a-46bb-9d36-e7decc4f636e)
+
+
 ## Features
 
 - Articles: Explore a wide range of gaming articles written by fellow gamers. Stay up-to-date with the latest gaming news, tips, and insights.
+![image](https://github.com/DylanBrown1993/final-project/assets/128406806/ff4fb252-2b87-47b5-b2f6-95353858bf6d)
+
+
 - Game Reviews: Read and share game reviews to help the community make informed decisions about their next gaming adventures.
+![image](https://github.com/DylanBrown1993/final-project/assets/128406806/666f76fb-e256-46a8-8344-9a6a68cd27fe)
+
+  
 - Forums: Engage in lively discussions with fellow gamers on our forums. Share your thoughts, ask questions, and be a part of the gaming community.
+![image](https://github.com/DylanBrown1993/final-project/assets/128406806/f3f66678-5e3a-469e-9f51-2c45dea2c595)
+
+  
 - Fan Art: Show off your creative side by sharing your gaming-related artwork and fan creations with the community.
+![image](https://github.com/DylanBrown1993/final-project/assets/128406806/e48fb319-04f9-4095-a258-4e5b01b0ff5d)
+
+  
 - Games: Discover and play exciting games right on our platform. Experience new adventures and challenges with a collection of carefully selected games.
+ ![image](https://github.com/DylanBrown1993/final-project/assets/128406806/9630c315-5fa4-466e-9d71-2caa11bf5aad)
+
 
 ## Community-driven
 At Flying Frog, we believe in the power of community. We foster a welcoming and inclusive environment for gamers of all backgrounds. Connect with like-minded individuals, share your passion for gaming, and make new friends along the way. Together, we can leap into new gaming horizons!
