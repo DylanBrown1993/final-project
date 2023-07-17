@@ -29,12 +29,10 @@ axios.defaults.withCredentials = true
 function App() {
   
   const [user, setUser] = useState(null);
-  console.log("userlog", user);
 
   useEffect(() => {
     const getUsers = async () => {
       const res = await axios.get("http://localhost:3001/users/info");
-      console.log(res);
       setUser(res.data);
     };
     getUsers();

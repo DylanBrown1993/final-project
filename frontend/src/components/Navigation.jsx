@@ -30,22 +30,21 @@ function Navigation(props) {
       </Link>
       <nav className="navbar-links" ref={navRef}>
       <NavLink
-        exact
         to="/articles"
-        activeClassName="active"
+        activeclasscame="active"
         className="nav-link-1">
         Articles
       </NavLink>
-      <NavLink to="/reviews" activeClassName="active" className="nav-link-2">
+      <NavLink to="/reviews" activeclassname="active" className="nav-link-2">
         Reviews
       </NavLink>
-      <NavLink to="/games" activeClassName="active" className="nav-link-3">
+      <NavLink to="/games" activeclassname="active" className="nav-link-3">
         Games
       </NavLink>
-      <NavLink to="/art" activeClassName="active" className="nav-link-4">
+      <NavLink to="/art" activeclassname="active" className="nav-link-4">
         Art
       </NavLink>
-      <NavLink to="/forum" activeClassName="active" className="nav-link-5">
+      <NavLink to="/forum" activeclassname="active" className="nav-link-5">
         Forum
       </NavLink>
     </nav>

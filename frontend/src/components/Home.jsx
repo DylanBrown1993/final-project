@@ -18,7 +18,6 @@ const Home = () => {
       try {
         const res = await axios.get(`http://localhost:3001/art`);
         setArt(res.data);
-        console.log(res.data);
       } catch (error) {
         console.error('Error fetching data', error);
       }
