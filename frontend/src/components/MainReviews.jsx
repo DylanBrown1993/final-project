@@ -3,8 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/MainReviews.css';
 
-
-
 const MainReview = () => {
   const [reviews, setReviews] = useState([]);
 

@@ -10,12 +10,9 @@ export const Login = (props) => {
 
   const navigate = useNavigate();
   
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username);
-
-    
 
     axios.post
     ('http://localhost:3001/login', {
@@ -41,8 +38,6 @@ export const Login = (props) => {
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="*******" id="password" name="password" />
         <button onClick={handleSubmit}>Login</button>
       </div>
-
-      {/* <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Sign Up</button> */}
       &nbsp;
       <Link to= "/register" >Don't have an account? Sign Up</Link>
     </div>

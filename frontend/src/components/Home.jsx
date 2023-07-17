@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Navigation from './Navigation';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/Games.css';
 import '../styles/Fonts.css';
 import '../styles/Home.css';
@@ -16,7 +15,6 @@ import ColorJumpImage from '../../../src/images/ColorJump.png';
 const Home = () => {
 
   const [art, setArt] = useState([]);
-  // const { id } = useParams();
 
   useEffect(() => {
     const getArt = async () => {

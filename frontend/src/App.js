@@ -25,7 +25,6 @@ import ArtLikes from './components/ArtLikes';
 
 axios.defaults.withCredentials = true
 
-
 function App() {
 
   useEffect(() => {
@@ -48,9 +47,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
-      } */}
 
       <Router>
         <Navigation user={user} setUser={setUser} />
@@ -71,7 +67,6 @@ function App() {
           <Route path="/submitreview" element={<SubmitReview />} />
           <Route path="/forum/:id" exact element={<ForumItemBody />} />
           <Route path="/forum" exact element={<Forum />} />
-          {/* <Route path="/forum/:id/:commentId" element={<ForumComments />} /> */}
           <Route path="/forum/:id" exact element={<ForumItemBody user={user} setUser={setUser}/>} />
           <Route path="/forum" exact element={<Forum user={user} setUser={setUser}/>} />
           <Route path="/forum/:id/:commentId" element={<ForumComments user={user} setUser={setUser} />} />

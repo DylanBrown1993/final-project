@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../styles/ForumComments.css';
 
 
 const ForumComments = (props) => {
 
-  const navigate = useNavigate();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 

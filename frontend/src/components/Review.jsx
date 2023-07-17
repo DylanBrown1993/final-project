@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReviewRatings from "./ReviewRatings";
 import "../styles/Review.css";
+import useDateFormatter from '../hooks/useDateFormatter';
 
 const Review = () => {
   const [review, setReview] = useState(null);
   const { id } = useParams();
-  const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
+  const { formatDate } = useDateFormatter();
 
   useEffect(() => {
     const getReview = async () => {
@@ -22,15 +24,6 @@ const Review = () => {
     };
     getReview();
   }, [id]);
-
-  const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
-  if (loading) {
-    return <div>Review Loading...</div>;
-  }
 
   if (!review) {
     return <div>Not found</div>;
@@ -60,5 +53,6 @@ const Review = () => {
 };
 
 export default Review;
+
 
 

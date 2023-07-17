@@ -2,14 +2,12 @@ import React from 'react';
 import { useRef } from 'react';
 import '../styles/Navigation.css';
 import logoImage from '../../../src/images/TitleNav.png';
-import ButtonImage from '../../../src/images/LilyButton.png';
 import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Navigation(props) {
   const navRef = useRef();
-  const showNavBar = () => navRef.current.classList.toggle('responsive_nav');
   const navigate = useNavigate();
 
   const logoutUser = () => {
@@ -31,12 +29,7 @@ function Navigation(props) {
         <img src={logoImage} alt="Ribbit" className="logo" />
       </Link>
       <nav className="navbar-links" ref={navRef}>
-      <NavLink
-        exact
-        to="/articles"
-        activeClassName="active"
-        className="nav-link-1"
-      >
+      <NavLink exact to="/articles" activeClassName="active" className="nav-link-1">
         Articles
       </NavLink>
       <NavLink to="/reviews" activeClassName="active" className="nav-link-2">
@@ -50,6 +43,7 @@ function Navigation(props) {
       </NavLink>
     </nav>
 
+    {/* // View for logged in  */}
 
       {props.user ? (
         <div className='user-text'>
@@ -59,6 +53,9 @@ function Navigation(props) {
           </button>
         </div>
       ) : (
+
+        // View for not logged in 
+
         <div className="button-container">
           <Link to="/login" className="login-btn">
             Login

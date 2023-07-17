@@ -19,6 +19,7 @@ const LikeButton = ({ articleId }) => {
     fetchLikesCount();
   }, [articleId]);
 
+  // Code to display an accurate number of likes on an article
   const incrementLikes = async () => {
     try {
       const updatedCount = likes + 1;

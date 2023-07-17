@@ -53,7 +53,7 @@ const Rating = ({reviewId}) => {
           key={i}
           className={`star ${i <= (hoverRating || rating) ? 'active' : ''}`}
           onMouseEnter={() => handleHover(i)}
-          onMouseLeave = {handleMouseLeave}
+          onMouseLeave={handleMouseLeave}
           onClick={() => handleRating(i)}
         >
           {i <= (hoverRating || rating) ? '🌟' : '⭐'}        

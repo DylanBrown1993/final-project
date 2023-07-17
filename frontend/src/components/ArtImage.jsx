@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ArtLikes from './ArtLikes';
-
+import useDateFormatter from '../hooks/useDateFormatter';
 
 const Art = (props) => {
   const [art, setArt] = useState(null);
   const { id } = useParams();
+  const { formatDate } = useDateFormatter(); 
 
   useEffect(() => {
     const getArt = async () => {
@@ -20,10 +21,6 @@ const Art = (props) => {
     getArt();
   }, [id]);
 
-  const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
 
   if (!art) {
     return <div> Art Not Found </div>;

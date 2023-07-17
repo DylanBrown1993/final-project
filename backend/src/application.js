@@ -3,13 +3,11 @@ const { Pool } = require("pg");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bcrypt = require("bcrypt");
-// const fileUpload = require("express-fileupload");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
 const app = express()
 const port = 3001
-// const db = require("./db")
 
 app.use(cookieSession ({
   name: "session",
