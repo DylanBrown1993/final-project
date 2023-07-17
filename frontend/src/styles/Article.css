@@ -1,3 +1,16 @@
+.main-articles-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  height: 200px;
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.home-articles-container {
+  width: 100%;
+}
+
 .id-article-image-container {
   width: 100vw;
   height: 31.25em;
@@ -14,6 +27,7 @@
   height: 100%;
   object-fit: cover;
   filter: brightness(40%);
+  opacity: 85%;
 }
 
 .id-article-info-overlay {
@@ -27,29 +41,57 @@
 
 .id-article-title {
   color: white;
-  font-size: 1.75em;
-  font-weight: bold;
-  margin-top: 9.25em;
+  font-size: 3.75em;
+  margin-top: 5.25em;
+  font-family: 'Acme', sans-serif;
 }
 
 .id-article-username,
 .id-article-description {
   color: white;
-  font-size: 1.125em;
+  font-size: 1.625em;
   margin-top: 0.625em;
 }
 
+.id-article-body {
+  font-family: 'ABeeZee', sans-serif;
+  color: white;
+}
 .id-article-body-container {
-  width: 85%;
+  width: 100em;
   margin: 0 auto;
-  margin-top: 34em;
+  margin-top: 40em;
   padding: 2em;
-  border: 0.013em solid #3A5A40;
-  background-color: #DAD7CD;
+  border: 0.013em solid #588157;
+  background-color: #3A5A40;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: black;
+}
+
+.id-article-date {
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 14px;
+}
+
+.main-articles-submit {
+  background-color: #3A5A40;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  color:white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 27px;
+  margin-bottom: 20px;
+  font-family: 'Acme', sans-serif;
+}
+
+.main-articles-submit:hover { 
+  transform: scale(1.02);
 }
 
 .like-button {
@@ -67,10 +109,13 @@
   text-decoration: none;
   cursor: pointer;
   width: 82px;
+  font-family: 'Acme', sans-serif;
 }
 
 .number-likes {
-  font-size: 10px;
+  font-size: 30px;
+  font-family: 'Acme', sans-serif;
+  margin-top: 0;
 }
 
 

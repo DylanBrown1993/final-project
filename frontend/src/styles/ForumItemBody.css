@@ -1,0 +1,32 @@
+.forum-item-title {
+  color: white;
+  font-size: 3.75em;
+  font-family: 'Acme', sans-serif;
+  margin-top: 3em;
+}
+
+.forum-item-body {
+  border-style: solid;
+  background-color: #3A5A40;
+  padding: 2em;
+  margin-bottom: 1em;
+  font-size: 1em;
+}
+
+.back-forum-link {
+  font-size: 1.7em;
+}
+
+.forum-username {
+  font-size: 1.5em;
+}
+
+.forum-time {
+  font-size: 1em;
+}
+
+.forum-comments-title {
+  color: white;
+  font-size: 2.75em;
+  font-family: 'Acme', sans-serif;
+}

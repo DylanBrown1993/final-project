@@ -4,14 +4,18 @@
   padding-bottom: 4em;
 }
 
+.rungame-game {
+  margin-left: 20em;
+}
+
 .game-info-container {
   margin-left: 17.5%;
   margin-right: 17.5%;
   padding: 2em;
-  border: 0.013em solid #3A5A40;
-  background-color: #DAD7CD;
+  border: 0.013em solid #DAD7CD;
+  background-color: #3A5A40;
   display: flex;
-  font-family: 'Abeezee';
+  font-family: 'Abeezee', sans-serif;
   flex-direction: column;
   align-items: center;
 }
@@ -19,6 +23,7 @@
 .game-title {
   text-align: center;
   font-size: 1.4375em;
+  font-family: 'Acme', sans-serif;
   padding-bottom: 1em;
 }
 

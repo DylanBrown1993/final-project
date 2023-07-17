@@ -14,12 +14,21 @@
 
 .auth-form-container {
   padding: 5rem;
-  border: 1px solid #DAD7CD;
+  border: 7px solid #DAD7CD;
   border-radius: 5px;
   margin: 0.5rem;
+  margin-top: 5em;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 label {
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-family: 'ABeeZee', sans-serif;
   text-align: left;
   padding: 0.25rem 0;
 }
@@ -29,20 +38,36 @@ input {
   padding: 0.5rem;
   border: none;
   border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+input:hover {
+  border-bottom-color: red;
+}
+
+.link-btn {
+  color: white;
 }
 
 button {
   border: none;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #DAD7CD;
   margin: 2px;
   cursor: pointer;
   color: #3A5A40;
+  background-color: #3A5A40;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  color:white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: 'Acme', sans-serif;
 }
 
-.link-btn {
-  background: none;
-  color: white;
-  text-decoration: underline;
+button:hover {
+  transform: scale(1.02);
 }

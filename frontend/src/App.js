@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import MainReview from './components/MainReviews';
@@ -27,6 +27,9 @@ axios.defaults.withCredentials = true
 
 
 function App() {
+  
+  const [user, setUser] = useState(null);
+  console.log("userlog", user);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -37,21 +40,10 @@ function App() {
     getUsers();
   }, []);
 
-  const [currentForm, setCurrentForm] = useState("login");
-  const [user, setUser] = useState(null);
-  console.log("userlog", user);
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
 
 
   return (
     <div className="App">
-      {/* {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
-      } */}
-
       <Router>
         <Navigation user={user} setUser={setUser} />
         <Routes>
@@ -71,7 +63,6 @@ function App() {
           <Route path="/submitreview" element={<SubmitReview />} />
           <Route path="/forum/:id" exact element={<ForumItemBody />} />
           <Route path="/forum" exact element={<Forum />} />
-          {/* <Route path="/forum/:id/:commentId" element={<ForumComments />} /> */}
           <Route path="/forum/:id" exact element={<ForumItemBody user={user} setUser={setUser}/>} />
           <Route path="/forum" exact element={<Forum user={user} setUser={setUser}/>} />
           <Route path="/forum/:id/:commentId" element={<ForumComments user={user} setUser={setUser} />} />

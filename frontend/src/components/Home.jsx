@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Navigation from './Navigation';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/Games.css';
 import '../styles/Fonts.css';
 import '../styles/Home.css';
@@ -11,12 +10,8 @@ import '../styles/MainReviews.css';
 import RunGameImage from '../../../src/images/RunGame.png';
 import ColorJumpImage from '../../../src/images/ColorJump.png';
 
-
-
 const Home = () => {
-
   const [art, setArt] = useState([]);
-  // const { id } = useParams();
 
   useEffect(() => {
     const getArt = async () => {
@@ -112,7 +107,7 @@ const Home = () => {
       <div key={art.id} className="art-item">
         <Link to={`/art/${art.id}`}>
           <div className="main-art-background">
-            <img src={art.image} className="art-image" alt="Art Image" />
+            <img src={art.image} className="art-image" alt="displays the art" />
             <div className="art-details">
               <span className="art-username">{art.username}</span>
             </div>
@@ -129,7 +124,7 @@ const Home = () => {
             <img src={RunGameImage} alt="run-game-img" />
           </Link>
           <Link to="/colorjump">
-            <img src={ColorJumpImage} alt="color-jump-img" />
+            <img src={ColorJumpImage} alt="displays the game logo" />
           </Link>
         </div>
       </div>

@@ -9,7 +9,6 @@ import ColorJumpImage from '../../../src/images/ColorJump.png';
 const Games = () => {
   return (
     <div className='background'>
-      <style>@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Acme&display=swap');</style>
       <h1 className='games-header'>Games</h1>
       <div className='games-list-container'>
         <Link to="/rungame">

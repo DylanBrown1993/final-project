@@ -1,75 +1,67 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import '../styles/Forum.css';
 
 const Forum = (props) => {
-  const [forums, setForum] = useState([]);
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const navigate = useNavigate();
+  const [forums, setForums] = useState([]);
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
-
-  useEffect(() => {
-
-    getForum();
-  }, []);
-
-
-
-  const getForum = async () => {
+  const getForums = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/forums");
-      console.log("hello", res.data);
-      setForum(res.data);
+      const res = await axios.get('http://localhost:3001/forums');
+      console.log('hello', res.data);
+      setForums(res.data);
     } catch (error) {
       console.error('Error fetching data', error);
     }
   };
 
+  useEffect(() => {
+    getForums();
+  }, []);
 
   const submitData = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post("http://localhost:3001/forums", {
-      title,
-      body
-    }).then(() => {
-      setTitle("");
-      setBody("");
-      getForum();
-    })
-
+    try {
+      await axios.post('http://localhost:3001/forums', {
+        title,
+        body,
+      });
+      setTitle('');
+      setBody('');
+      getForums();
+    } catch (error) {
+      console.error('Error submitting data', error);
+    }
   };
-
-
 
   return (
     <div>
-
       <h1 className="forum-header">Forum</h1>
-
-      {props.user ? (
+      {!props.user ? (
         <form onSubmit={submitData}>
-          <label for="title">Title</label>
+          <label htmlFor="title">Title:</label>
           <input value={title} type="text" id="title" name="title" onChange={(e) => setTitle(e.target.value)} />
-          <label for="content">Body</label>
+          <label htmlFor="content">Body:</label>
           <textarea id="content" value={body} name="body" rows="4" cols="50" onChange={(e) => setBody(e.target.value)}></textarea>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="forum-submit-btn" />
         </form>
       ) : (
-        <p>Please log in to post</p>
+        <p className="forum-login">Please log in to post</p>
       )}
 
       <div className="forum-list">
-        {forums.map(forum => (
+        {forums.map((forum) => (
           <div key={forum.id} className="forum-list-item">
             <Link to={`/forum/${forum.id}`}>
               <h2>{forum.title}</h2>
             </Link>
-            <div className="forum-user>">
+            <div className="forum-user">
               <a>Posted by: {forum.username}</a>
-              <br></br>
+              <br />
               <a>Posted on: {new Date(forum.time_stamp).toLocaleString()}</a>
             </div>
           </div>

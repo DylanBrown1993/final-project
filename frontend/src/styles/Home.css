@@ -1,20 +1,26 @@
+:root {
+  --dark-green: #3A5A40;
+  --light-green: #588157;
+
+}
 .home-header-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 43.75em; 
-  padding-top: 12.5em; 
+  height: 500px; 
+  padding-top: 160px; 
   background-image: url('../../../src/images/TitleNav.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 43.6875em; 
+  background-size: 23.6875em; 
+  background-color:var(--light-green);
 }
 
 .home-text {
   width: 100%;
-  font-size: 1.875em; 
+  font-size: 27px; 
   color: white;
   opacity: 100%;
   display: flex;
@@ -23,14 +29,28 @@
   justify-content: center;
   text-align: center;
   padding: 0 6.25em; 
+  padding-top: 2.25em;
   box-sizing: border-box;
   padding-bottom: 2.5em;
+  background-color: #3A5A40;
+  letter-spacing: 3px;
+  font-family: 'Metrophobic', sans-serif;
+  font-weight: 600;
 }
 
 h2 {
   font-size: 3.125em;
-  margin-top: 2.125em; 
-  margin-bottom: 2.125em; 
+  margin-top: .05em; 
+  margin-bottom: 1em; 
+  font-family: 'Acme', sans-serif;
+}
+
+.article-title {
+  display: flex;
+  justify-content: center;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 1.2em;
+  text-align: center;
 }
 
 div.home-container {
@@ -44,19 +64,20 @@ div.home-container {
   text-align: center;
   justify-content: center;
   padding: 1.25em;
-  background-color: #3A5A40;
-  border-radius: 0.3125em; 
+  background-color: var(--light-green);
+  border-radius: 15px;
   height: 12.5em; 
 }
 
 .home-article-first {
   position: relative;
-  background-color: #3A5A40;
+  background-color: var(--light-green);
   height: 25em; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 30px;
 }
 
 .home-article-grid {
@@ -65,6 +86,9 @@ div.home-container {
   gap: 1.25em;
   padding-left: 7.5%;
   padding-right: 7.5%;
+  padding-top: 4em;
+  padding-bottom: 2em;
+  background-color: var(--dark-green);
 }
 
 .home-article-item.home-full-width {
@@ -83,12 +107,29 @@ div.home-container {
   grid-gap: 1.25em; 
   padding-left: 7.5%;
   padding-right: 7.5%;
+  padding-top: 4em;
+  padding-bottom: 2em;
+  background-color: var(--dark-green);
+}
+
+.review-title {
+  display: flex;
+  justify-content: center;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 2.3em;
+  text-align: center;
+  align-items: center;
+  margin-top: 0;
 }
 
 div.art-grid {
   padding-left: 7.5%;
   padding-right: 7.5%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: var(--dark-green);
 }
+
 
 .home-review-item {
   margin-bottom: 1.25em; 
@@ -105,13 +146,21 @@ div.art-grid {
   text-align: center;
   justify-content: center;
   padding: 1.25em;
-  background-color: #3A5A40;
-  border-radius: 0.3125em;
+  background-color: var(--light-green);
+  border-radius: 15px;
   height: 12.5em; 
 }
 
 .home-review-first {
-  background-color: #3A5A40;
+  background-color: var(--light-green);
   height: 25em; 
   display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+.company-footer {
+  background-color: var(--dark-green);
 }

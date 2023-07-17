@@ -2,14 +2,12 @@ import React from 'react';
 import { useRef } from 'react';
 import '../styles/Navigation.css';
 import logoImage from '../../../src/images/TitleNav.png';
-import ButtonImage from '../../../src/images/LilyButton.png';
 import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Navigation(props) {
   const navRef = useRef();
-  const showNavBar = () => navRef.current.classList.toggle('responsive_nav');
   const navigate = useNavigate();
 
   const logoutUser = () => {
@@ -26,7 +24,7 @@ function Navigation(props) {
   };
 
   return (
-    <header>
+    <header className="nav-header">
       <Link to="/" className="logo-link">
         <img src={logoImage} alt="Ribbit" className="logo" />
       </Link>
@@ -35,8 +33,7 @@ function Navigation(props) {
         exact
         to="/articles"
         activeClassName="active"
-        className="nav-link-1"
-      >
+        className="nav-link-1">
         Articles
       </NavLink>
       <NavLink to="/reviews" activeClassName="active" className="nav-link-2">
@@ -48,9 +45,10 @@ function Navigation(props) {
       <NavLink to="/art" activeClassName="active" className="nav-link-4">
         Art
       </NavLink>
+      <NavLink to="/forum" activeClassName="active" className="nav-link-5">
+        Forum
+      </NavLink>
     </nav>
-
-
       {props.user ? (
         <div className='user-text'>
           {props.user.name}{' '}

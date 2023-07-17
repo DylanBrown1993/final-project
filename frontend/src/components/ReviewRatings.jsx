@@ -4,9 +4,7 @@ import axios from 'axios';
 const Rating = ({reviewId}) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-  const [prevRating, setPrevRating] = useState(0);
-
-
+  const [setPrevRating] = useState(0);
   const fetchRating = async () => {
     try {
       const response = await axios.get(`http://localhost:3001/api/ratings?page=${reviewId}`)
@@ -53,7 +51,7 @@ const Rating = ({reviewId}) => {
           key={i}
           className={`star ${i <= (hoverRating || rating) ? 'active' : ''}`}
           onMouseEnter={() => handleHover(i)}
-          onMouseLeave = {handleMouseLeave}
+          onMouseLeave={handleMouseLeave}
           onClick={() => handleRating(i)}
         >
           {i <= (hoverRating || rating) ? '🌟' : '⭐'}        
@@ -65,8 +63,8 @@ const Rating = ({reviewId}) => {
 
   return (
     <div>
-      <div className="rating">{renderStars()}</div>
-      <p>{rating} out of 5 stars </p>
+      <div className="id-rating">{renderStars()}</div>
+      <p className="id-review-ratings" >{rating} out of 5 stars </p>
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ArtLikes from './ArtLikes';
 
-
 const Art = (props) => {
   const [art, setArt] = useState(null);
   const { id } = useParams();
@@ -12,6 +11,7 @@ const Art = (props) => {
     const getArt = async () => {
       try {
         const res = await axios.get(`http://localhost:3001/art/${id}`);
+        console.log("res:", res,id);
         setArt(res.data);
       } catch (error) {
         console.error('Error fetching data', error);
@@ -32,13 +32,12 @@ const Art = (props) => {
   return (
     <div className="art-route">
       <div className="art-container">
-        <h1>Art</h1>
         <div className="art-info">
-          <p>{formatDate(art.time_stamp)}</p>
-          <h1>{art.title}</h1>
-          <p>{art.username}</p>
+          <h1 className="art-title">{art.title}</h1>
+          <p className="art-username">{art.username}</p>
+          <p className="art-time">{formatDate(art.time_stamp)}</p>
           <div className="art-background">
-            <img src={art.image}/>
+            <img src={art.image} alt="displays the upload"/>
           </div>
           <ArtLikes artId={art.id} user={props.user} setUser={props.setUser}/>
         </div>

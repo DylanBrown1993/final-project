@@ -5,7 +5,7 @@ const ColorJump = () => {
   return (
     <div className='background'>
       <style>@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Acme&display=swap');</style>
-      <div style={{ position: 'relative', height: 0, overflow: 'hidden', paddingBottom: '56.25%', marginLeft: 165, }}>
+      <div style={{ position: 'relative', height: 0, overflow: 'hidden', paddingBottom: '56.25%'}} className="rungame-game">
         <iframe id="embededGame" src="https://idev.games/embed/color-jump" scrolling="no" seamless="seamless" frameBorder="0" style={{ position: 'absolute', top: 0, left: 0, width: '80%', height: '80%' }}>Browser not compatible.</iframe>
       </div>
       <div className='game-info-container'>

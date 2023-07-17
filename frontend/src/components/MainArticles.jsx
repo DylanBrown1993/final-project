@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/MainArticles.css';
 
-
 const MainArticle = () => {
   const [articles, setArticles] = useState([]);
 
@@ -21,9 +20,9 @@ const MainArticle = () => {
 
   return (
     <div className="home-articles-container">
-    <h2>Articles</h2>
+    <h2 className="main-articles-title">Articles</h2>
     <Link to={`/submitarticle`}>
-      <button>Submit An Article</button>
+      <button className="main-articles-submit">Submit An Article</button>
     </Link>
     <div className="home-article-grid">
       {articles.map((article, index) => (

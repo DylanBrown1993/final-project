@@ -5,8 +5,24 @@
 
 .forum-each-comment {
   margin-top: 10px;
+  border-style: solid;
+  background-color: #3A5A40;
+  padding: 2em;
+  margin-bottom: 1em;
+  color: white;
 }
 
 .comment {
   margin-bottom: 5px;
+  font-size: 1em;
+  margin-top: 10px;
+  border-style: solid;
+  background-color: #588157;
+  padding: 2em;
+  margin-bottom: 1em;
+  color: white;
+}
+
+.forum-form {
+  height: 3em;
 }

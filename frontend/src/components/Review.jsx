@@ -43,15 +43,14 @@ const Review = () => {
           <img
             src={review.header_image}
             alt=""
-            className="id-review-image"
-          />
+            className="id-review-image"/>
           <div className="id-review-info-overlay">
             <h1 className="id-review-title">{review.title}</h1>
             <p className="id-review-username">{review.username}</p>
             <ReviewRatings reviewId={id} />
             <p className="id-review-description">{review.description}</p>
             <p className="id-review-body">{review.body}</p>
-            <p>{formatDate(review.time_stamp)}</p>
+            <p className="id-review-time">{formatDate(review.time_stamp)}</p>
           </div>
         </div>
       </div>

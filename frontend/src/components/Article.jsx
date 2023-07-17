@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ArticleLikes from "./ArticleLikes";
-
+import useDateFormatter from "../hooks/useDateFormatter";
 
 const Article = () => {
   const [article, setArticle] = useState(null);
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
+  const { formatDate } = useDateFormatter();
 
   useEffect(() => {
     const getArticle = async () => {
@@ -23,11 +24,6 @@ const Article = () => {
     getArticle();
   }, [id]);
 
-  const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
   if (loading) {
     return <div>Article Loading...</div>;
   }
@@ -40,11 +36,7 @@ const Article = () => {
     <div className="id-article-route">
       <div className="id-article-container">
         <div className="id-article-image-container">
-          <img
-            src={article.header_image}
-            alt=""
-            className="id-article-image"
-          />
+          <img src={article.header_image} alt="" className="id-article-image" />
           <div className="id-article-info-overlay">
             <h1 className="id-article-title">{article.title}</h1>
             <p className="id-article-username">{article.username}</p>
@@ -57,6 +49,7 @@ const Article = () => {
         <div className="id-article-likes-container">
           <ArticleLikes articleId={id} />
         </div>
+        <p className="id-article-date">{formatDate(article.time_stamp)}</p>
       </div>
     </div>
   );

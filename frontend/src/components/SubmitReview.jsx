@@ -26,33 +26,33 @@ const SubmitReview = (props) => {
 
   return (
     <div>
-      <h1>Submit A Review</h1>
+      <h1 className="submit-review-title">Submit A Review</h1>
       {!props.user ? (
         <form method="POST" action="/submitreview" onSubmit={handleSubmit}>
           <label>
             Title:
+          </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-          </label>
           <label>
             Body:
+          </label>
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-          </label>
           <label>
             Description:
+          </label>
             <input
               type="text"
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
-          </label>
           <button type="submit">Submit</button>
         </form>
       ) : (

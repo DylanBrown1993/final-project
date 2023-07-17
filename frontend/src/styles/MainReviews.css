@@ -1,5 +1,10 @@
-.main-review-title {
-  text-align: center;
+.main-reviews-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  height: 200px;
+  margin-bottom: 0;
+  align-items: center;
 }
 
 .review-item {
@@ -58,4 +63,23 @@ p {
 
 .review-link {
   text-decoration: none;
+}
+
+.main-reviews-submit {
+  background-color: #3A5A40;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  color:white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 27px;
+  margin-bottom: 20px;
+  font-family: 'Acme', sans-serif;
+}
+
+.main-reviews-submit:hover {
+  transform: scale(1.02);
 }
